@@ -1,0 +1,6 @@
+:root {
+  --primary-color: red;
+}
+
+@import "./tailwind.css";
+@import "./nprogress.css";
