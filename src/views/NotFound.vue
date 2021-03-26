@@ -1,16 +1,16 @@
 <template>
-  <div>
-<h1>Home</h1>
-  </div>
+    <div>
+        <h1>Not Found :(</h1>
+    </div>
 </template>
 
 <script>
 export default {
-  setup () {
-    
+    setup () {
+        
 
-    return {}
-  }
+        return {}
+    }
 }
 </script>
 
