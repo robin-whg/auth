@@ -2,14 +2,8 @@
   <div>
     <h1>Sign In</h1>
     <form>
-      <div>
-        <label for="email">Email</label>
-        <input v-model.trim="email" type="email" id="email" />
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input v-model.trim="password" type="password" id="password" />
-      </div>
+        <base-form-input v-model="email" label="E-Mail" type="email" ></base-form-input>
+        <base-form-input v-model="password" label="E-Mail" type="email" ></base-form-input>
       <button type="submit">Sign In</button>
       <p>
         Forgot password?
