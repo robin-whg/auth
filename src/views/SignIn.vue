@@ -1,42 +1,82 @@
 <template>
-  <div>
-    <h1>Sign In</h1>
-    <form>
-        <base-form-input v-model="email" label="E-Mail" type="email" ></base-form-input>
-        <base-form-input v-model="password" label="E-Mail" type="email" ></base-form-input>
-      <button type="submit">Sign In</button>
-      <p>
-        Forgot password?
-        <router-link :to="{ name: 'ResetPassword' }"> Reset </router-link>
+  <div class="max-w-md h-screen flex flex-col mx-auto justify-center p-4">
+    <h1 class="text-center font-semibold text-4xl pb-4">Sign In</h1>
+    <form @submit.prevent="submit()" novalidate>
+      <base-form-input
+        :error="errorEmail"
+        v-model.trim="email"
+        label="E-Mail"
+        type="email"
+      ></base-form-input>
+      <base-form-input
+        :error="errorPassword"
+        v-model.trim="password"
+        label="Password"
+        type="password"
+      >
+        <router-link class="text-blue-600 hover:text-blue-700" :to="{ name: 'ResetPassword' }"> Forgot Password? </router-link>
+      </base-form-input>
+      <base-button
+        type="submit"
+        color="blue-600"
+        class="bg-blue-600 hover:bg-blue-700 text-gray-50 w-full mb-2"
+        >Sign In</base-button
+      >
+      <p class="text-red-600">
+        {{ error }}
       </p>
-      <p>
+      <p class="text-center">
         No account?
-        <router-link :to="{ name: 'SignUp' }"> Sign Up </router-link>
+        <router-link class="text-blue-600 hover:text-blue-700" :to="{ name: 'SignUp' }"> Sign Up </router-link>
       </p>
     </form>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-//import { auth } from "@/firebase.js";
+import { ref } from "vue";
+import { auth } from "@/firebase.js";
 export default {
   setup() {
-    const email = ref('')
-    const password = ref('')
-    const loading = ref(false)
-    const error = ref('')
-    function submit() {
-        try {
-            //clear error
-           //check input 
-           //api call
-           //reroute
-        } catch (error) {
-           //handle error 
+    const email = ref("");
+    const password = ref("");
+    const loading = ref(false);
+    const error = ref("");
+    const errorEmail = ref("");
+    const errorPassword = ref("");
+    async function submit() {
+      console.log("test");
+      try {
+        errorEmail.value = ''
+        errorPassword.value = ''
+        error.value = ''
+        if(!email.value || !email.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)) {
+          errorEmail.value = 'Please enter a valid e-mail.'
         }
+        if(!password.value) {
+          errorPassword.value = 'Please a valid password.'
+        }
+        if(!errorEmail.value && !errorPassword.value) {
+          //api call
+          await auth.signInWithEmailAndPassword(email.value, password.value)
+        }
+        //api call
+        //reroute
+      } catch (err) {
+        console.log(err)
+        error.value = err.message
+        //handle error
+      }
     }
-    return { email, password, loading, error, submit };
+    return {
+      email,
+      password,
+      loading,
+      error,
+      errorEmail,
+      errorPassword,
+      submit,
+    };
   },
 };
 </script>

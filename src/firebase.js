@@ -14,4 +14,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth()
-export const user = firebase.auth().currentUser
+
+export const u = {
+  user: '',
+  get getUser() {
+    return this.user
+  },
+  set setUser(x) {
+    this.user = x
+  }
+}
