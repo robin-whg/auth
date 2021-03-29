@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import "./assets/style.css";
 
-import { auth, u } from "@/firebase.js";
+import { auth, setUser } from "@/firebase.js";
 
 const requireComponent = require.context(
   "./components",
@@ -13,7 +13,7 @@ const requireComponent = require.context(
 
 let app;
 auth.onAuthStateChanged((currentUser) => {
-  u.setUser = currentUser;
+  setUser(currentUser);
   if (!app) {
     app = createApp(App).use(router);
 

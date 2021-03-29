@@ -15,12 +15,9 @@ firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth()
 
-export const u = {
-  user: '',
-  get getUser() {
-    return this.user
-  },
-  set setUser(x) {
-    this.user = x
-  }
+export let user = {}
+
+export function setUser(x) {
+  console.log('set user')
+  user = x
 }
