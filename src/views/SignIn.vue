@@ -39,7 +39,7 @@ import { ref } from "vue";
 import { useRouter } from 'vue-router'
 import { auth } from "@/firebase.js";
 export default {
-  setup(props, context) {
+  setup() {
     const router = useRouter()
     const email = ref("");
     const password = ref("");
@@ -48,7 +48,6 @@ export default {
     const errorEmail = ref("");
     const errorPassword = ref("");
     async function submit() {
-      console.log(context);
       try {
         errorEmail.value = ''
         errorPassword.value = ''
