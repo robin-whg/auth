@@ -1,8 +1,23 @@
 <template>
   <div v-if="user">
-    <base-button @click="signOut" class="bg-red-200 text-red-600"
-      >Sign Out</base-button
-    >
+    <base-dropdown position="right">
+      <template v-slot:button>user</template>
+      <template v-slot:items>
+      <div class="whitespace-nowrap pb-3 px-4">
+        <p>Sign in as</p>
+        <p class="font-semibold" v-if="user.displayName">{{ user.displayName }}</p>
+        <p class="font-semibold" v-else>{{ user.email }}</p>
+      </div>
+      <hr class="mb-2">
+      <base-dropdown-item  class="hover:bg-gray-200">
+        <router-link :to="{ name: 'Settings' }" class="w-full px-4 py-1"> Settings </router-link>
+      </base-dropdown-item>
+      <base-dropdown-item class="hover:bg-gray-200">
+        <button @click="signOut()" class="text-left w-full px-4 py-1">Sign Out</button>
+      </base-dropdown-item>
+ 
+      </template>
+   </base-dropdown>
   </div>
   <div v-else>
     <base-button
@@ -41,7 +56,7 @@ export default {
       }
     }
     return { user, signOut };
-  },
+  }
 };
 </script>
 
