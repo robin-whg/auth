@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-md h-screen flex flex-col mx-auto justify-center p-4">
-    <img src="@/assets/logo.svg" alt="Logo" class="h-16 w-auto mb-4" />
+    <router-link to="/" class="mx-auto">
+      <img src="@/assets/logo.svg" alt="Logo" class="h-16 w-auto mb-4" />
+    </router-link>
     <h1 class="text-center font-semibold text-4xl pb-4">Reset Password</h1>
     <form @submit.prevent="submit()" novalidate>
       <base-form-input
@@ -54,7 +56,7 @@ export default {
         }
         if (!errorEmail.value) {
           await auth.sendPasswordResetEmail(email.value);
-          email.value = ''
+          email.value = "";
           alert("email sent");
         }
       } catch (err) {
@@ -68,7 +70,7 @@ export default {
       submit,
       loading,
       error,
-      errorEmail
+      errorEmail,
     };
   },
 };
