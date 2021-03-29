@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NProgress from 'nprogress'
-import { user } from '@/firebase.js'
+import { state } from '@/firebase.js'
 
 const routes = [
   {
@@ -20,19 +20,28 @@ const routes = [
     path: "/sign_up",
     name: "SignUp",
     component: () => import("../views/SignUp.vue"),
+    meta: {
+      noNav: true
+    }
   },
   {
     path: "/sign_in",
     name: "SignIn",
     component: () => import("../views/SignIn.vue"),
+    meta: {
+      noNav: true
+    }
   },
   {
     path: "/reset_password",
     name: "ResetPassword",
     component: () => import("../views/ResetPassword.vue"),
+    meta: {
+      noNav: true
+    }
   },
   {
-    path: "/*",
+    path: "/:catchAll(.*)",
     name: "NotFound",
     component: () => import("../views/NotFound.vue")
   }
@@ -45,7 +54,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if(!user && to.meta.requiresAuth) next({ name: 'SignIn' })
+  if(!state.user && to.meta.requiresAuth) next({ name: 'SignIn' })
   else next()
 })
 

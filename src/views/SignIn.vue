@@ -1,5 +1,6 @@
 <template>
   <div class="max-w-md h-screen flex flex-col mx-auto justify-center p-4">
+    <img src="@/assets/logo.svg" alt="Logo" class="h-16 w-auto mb-4">
     <h1 class="text-center font-semibold text-4xl pb-4">Sign In</h1>
     <form @submit.prevent="submit()" novalidate>
       <base-form-input
@@ -35,9 +36,11 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter } from 'vue-router'
 import { auth } from "@/firebase.js";
 export default {
-  setup() {
+  setup(props, context) {
+    const router = useRouter()
     const email = ref("");
     const password = ref("");
     const loading = ref(false);
@@ -45,7 +48,7 @@ export default {
     const errorEmail = ref("");
     const errorPassword = ref("");
     async function submit() {
-      console.log("test");
+      console.log(context);
       try {
         errorEmail.value = ''
         errorPassword.value = ''
@@ -59,6 +62,7 @@ export default {
         if(!errorEmail.value && !errorPassword.value) {
           //api call
           await auth.signInWithEmailAndPassword(email.value, password.value)
+          router.replace({ name: 'Home' })
         }
         //api call
         //reroute
