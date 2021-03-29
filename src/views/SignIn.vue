@@ -48,10 +48,11 @@ export default {
     const errorEmail = ref("");
     const errorPassword = ref("");
     async function submit() {
-      try {
+        loading.value = true
         errorEmail.value = ''
         errorPassword.value = ''
         error.value = ''
+      try {
         if(!email.value || !email.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)) {
           errorEmail.value = 'Please enter a valid e-mail.'
         }
@@ -66,6 +67,7 @@ export default {
         console.log(err)
         error.value = err.message
       }
+      loading.value = false
     }
     return {
       email,
