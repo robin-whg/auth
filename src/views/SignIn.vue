@@ -59,16 +59,12 @@ export default {
           errorPassword.value = 'Please a valid password.'
         }
         if(!errorEmail.value && !errorPassword.value) {
-          //api call
           await auth.signInWithEmailAndPassword(email.value, password.value)
           router.replace({ name: 'Home' })
         }
-        //api call
-        //reroute
       } catch (err) {
         console.log(err)
         error.value = err.message
-        //handle error
       }
     }
     return {
