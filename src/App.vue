@@ -20,7 +20,6 @@ export default {
           .split(";")
           .some((item) => item.includes("darkMode=true"))
       ) {
-        console.log('toggling')
         document.querySelector("body").classList.add("dark");
       }
     }
