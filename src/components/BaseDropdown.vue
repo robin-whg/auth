@@ -3,7 +3,7 @@
   <div ref="dropdown" class="relative float-right">
     <div
       @click="isVisible = !isVisible"
-      class="cursor-pointer select-none bg-red-200"
+      class="cursor-pointer select-none"
     >
       <slot name="button" />
     </div>

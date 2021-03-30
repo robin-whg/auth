@@ -1,23 +1,39 @@
 <template>
   <div v-if="user">
     <base-dropdown position="right">
-      <template v-slot:button>user</template>
-      <template v-slot:items>
-      <div class="whitespace-nowrap pb-3 px-4">
-        <p>Sign in as</p>
-        <p class="font-semibold" v-if="user.displayName">{{ user.displayName }}</p>
-        <p class="font-semibold" v-else>{{ user.email }}</p>
-      </div>
-      <hr class="mb-2">
-      <base-dropdown-item>
-        <router-link :to="{ name: 'Settings' }" class="w-full px-4 py-1"> Settings </router-link>
-      </base-dropdown-item>
-      <base-dropdown-item>
-        <button @click="signOut()" class="text-left w-full px-4 py-1">Sign Out</button>
-      </base-dropdown-item>
- 
+      <template v-slot:button>
+        <i
+          class="bi bi-person text-2xl text-gray-600 hover:bg-gray-200 rounded-lg py-1 px-2"
+        ></i>
       </template>
-   </base-dropdown>
+      <template v-slot:items>
+        <div class="whitespace-nowrap pb-3 px-4">
+          <p>Sign in as</p>
+          <p class="font-semibold" v-if="user.displayName">
+            {{ user.displayName }}
+          </p>
+          <p class="font-semibold" v-else>{{ user.email }}</p>
+        </div>
+        <hr class="mb-2" />
+        <base-dropdown-item>
+          <router-link
+            :to="{ name: 'Settings' }"
+            class="w-full px-4 py-1 flex items-center"
+            ><i class="bi bi-gear text-gray-600 text-xl mr-2"></i
+            ><span>Settings</span></router-link
+          >
+        </base-dropdown-item>
+        <base-dropdown-item>
+          <button
+            @click="signOut()"
+            class="text-left w-full px-4 py-1 flex items-center"
+          >
+            <i class="bi bi-box-arrow-right text-red-600 text-xl mr-2"></i
+            ><span>Sign Out</span>
+          </button>
+        </base-dropdown-item>
+      </template>
+    </base-dropdown>
   </div>
   <div v-else>
     <base-button
@@ -41,22 +57,22 @@ import { computed } from "vue";
 export default {
   setup() {
     const router = useRouter();
-    const route = useRoute()
+    const route = useRoute();
     const user = computed(() => {
       return state.user;
     });
     async function signOut() {
       try {
         await auth.signOut();
-        if(route.meta.requiresAuth) {
-          router.push({ name: 'Home' })
+        if (route.meta.requiresAuth) {
+          router.push({ name: "Home" });
         }
       } catch (error) {
         console.log(error);
       }
     }
     return { user, signOut };
-  }
+  },
 };
 </script>
 
