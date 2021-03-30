@@ -2,7 +2,7 @@
 
 :root {
   font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
-  --primary-color: red;
+  --primary-color: #2563EB;
 }
 
 @import "./tailwind.css";
