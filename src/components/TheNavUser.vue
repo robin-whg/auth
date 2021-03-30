@@ -16,6 +16,9 @@
         </div>
         <hr class="mb-2  border-gray-500" />
         <base-dropdown-item>
+          <dark-mode-toggle></dark-mode-toggle>
+        </base-dropdown-item>
+        <base-dropdown-item>
           <router-link
             :to="{ name: 'Settings' }"
             class="w-full px-4 py-1 flex items-center"
@@ -53,8 +56,12 @@
 import { auth, state } from "@/firebase.js";
 import { useRouter, useRoute } from "vue-router";
 import { computed } from "vue";
+import DarkModeToggle from '@/components/DarkModeToggle.vue'
 
 export default {
+  components: {
+    DarkModeToggle
+  },
   setup() {
     const router = useRouter();
     const route = useRoute();
