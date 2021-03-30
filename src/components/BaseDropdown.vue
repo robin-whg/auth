@@ -10,7 +10,7 @@
     <ul
       id="dropdown-items"
       v-if="isVisible"
-      class="absolute shadow overflow-hidden rounded-xl mt-2 py-2"
+      class="absolute shadow overflow-hidden rounded-xl mt-2 py-2 bg-gray-100 dark:bg-gray-800"
       :class="pos"
     >
       <slot name="items" />

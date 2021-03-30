@@ -3,7 +3,7 @@
     <base-dropdown position="right">
       <template v-slot:button>
         <i
-          class="bi bi-person text-2xl text-gray-600 hover:bg-gray-200 rounded-lg py-1 px-2"
+          class="bi bi-person text-2xl rounded-lg py-1 px-2"
         ></i>
       </template>
       <template v-slot:items>
@@ -14,12 +14,12 @@
           </p>
           <p class="font-semibold" v-else>{{ user.email }}</p>
         </div>
-        <hr class="mb-2" />
+        <hr class="mb-2  border-gray-500" />
         <base-dropdown-item>
           <router-link
             :to="{ name: 'Settings' }"
             class="w-full px-4 py-1 flex items-center"
-            ><i class="bi bi-gear text-gray-600 text-xl mr-2"></i
+            ><i class="bi bi-gear text-gray-500 text-xl mr-2"></i
             ><span>Settings</span></router-link
           >
         </base-dropdown-item>
@@ -28,7 +28,7 @@
             @click="signOut()"
             class="text-left w-full px-4 py-1 flex items-center"
           >
-            <i class="bi bi-box-arrow-right text-red-600 text-xl mr-2"></i
+            <i class="bi bi-box-arrow-right text-red-500 text-xl mr-2"></i
             ><span>Sign Out</span>
           </button>
         </base-dropdown-item>
