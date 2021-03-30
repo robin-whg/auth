@@ -9,10 +9,10 @@
         <p class="font-semibold" v-else>{{ user.email }}</p>
       </div>
       <hr class="mb-2">
-      <base-dropdown-item  class="hover:bg-gray-200">
+      <base-dropdown-item>
         <router-link :to="{ name: 'Settings' }" class="w-full px-4 py-1"> Settings </router-link>
       </base-dropdown-item>
-      <base-dropdown-item class="hover:bg-gray-200">
+      <base-dropdown-item>
         <button @click="signOut()" class="text-left w-full px-4 py-1">Sign Out</button>
       </base-dropdown-item>
  
