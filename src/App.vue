@@ -12,8 +12,6 @@ export default {
     TheNav
   },
   setup () {
-    
-
     return {}
   }
 }
