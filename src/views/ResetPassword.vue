@@ -15,7 +15,7 @@
         :loading="loading"
         type="submit"
         color="blue-600"
-        class="bg-blue-600 hover:bg-blue-700 text-gray-50 w-full mb-2"
+        class="bg-blue-500 text-gray-50 w-full mb-2"
         >Reset Password</base-button
       >
       <p class="text-red-600">
@@ -24,7 +24,7 @@
       <p class="text-center">
         Back to
         <router-link
-          class="text-blue-600 hover:text-blue-700"
+          class="text-blue-500"
           :to="{ name: 'SignIn' }"
         >
           Sign In

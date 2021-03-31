@@ -18,7 +18,7 @@
         type="password"
       >
         <router-link
-          class="text-blue-600 hover:text-blue-700"
+          class="text-blue-500"
           :to="{ name: 'ResetPassword' }"
         >
           Forgot Password?
@@ -28,16 +28,16 @@
         type="submit"
         color="blue-600"
         :loading="loading"
-        class="bg-blue-600 hover:bg-blue-700 text-gray-50 w-full mb-2"
+        class="bg-blue-500 text-gray-50 w-full mb-2"
         >Sign In</base-button
       >
-      <p class="text-red-600">
+      <p class="text-red-500">
         {{ error }}
       </p>
       <p class="text-center">
         No account?
         <router-link
-          class="text-blue-600 hover:text-blue-700"
+          class="text-blue-500"
           :to="{ name: 'SignUp' }"
         >
           Sign Up
