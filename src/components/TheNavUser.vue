@@ -14,7 +14,6 @@
           </p>
           <p class="font-semibold" v-else>{{ user.email }}</p>
         </div>
-        <hr class="mb-2  border-gray-500" />
         <base-dropdown-item>
           <dark-mode-toggle></dark-mode-toggle>
         </base-dropdown-item>
