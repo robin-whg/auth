@@ -2,9 +2,9 @@
   <div v-if="user">
     <base-dropdown position="right">
       <template v-slot:button>
-        <i
-          class="bi bi-person text-2xl rounded-lg py-1 px-2"
-        ></i>
+        <button class="hover:bg-gray-200 rounded-full p-2">
+          <i class="bi bi-person text-2xl text-gray-500"></i>
+        </button>
       </template>
       <template v-slot:items>
         <div class="whitespace-nowrap pb-3 px-4">
@@ -45,7 +45,7 @@
     >
     <base-button
       @click="$router.push({ name: 'SignUp' })"
-      class="bg-blue-600 text-gray-50"
+      class="bg-blue-500 text-gray-50"
       >Sign Up</base-button
     >
   </div>
@@ -55,11 +55,11 @@
 import { auth, state } from "@/firebase.js";
 import { useRouter, useRoute } from "vue-router";
 import { computed } from "vue";
-import DarkModeToggle from '@/components/DarkModeToggle.vue'
+import DarkModeToggle from "@/components/DarkModeToggle.vue";
 
 export default {
   components: {
-    DarkModeToggle
+    DarkModeToggle,
   },
   setup() {
     const router = useRouter();
