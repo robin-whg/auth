@@ -1,9 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
 :root {
-  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
-  --primary-color: #2563EB;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  --primary-color: #3b82f6;
 }
 
 @import "./tailwind.css";
 @import "./nprogress.css";
+
+@layer components {
+  i {
+    @apply flex items-center justify-items-center;
+  }
+}
