@@ -3,7 +3,7 @@
     @click="toggle()"
     class="text-left w-full px-4 py-1 flex items-center"
   >
-    <i v-if="!darkMode" class="bi bi-toggle-off text-gray-500 text-xl mr-2"></i>
+    <i v-if="!darkMode" class="bi bi-toggle-off dark:text-gray-400 text-gray-600 text-xl mr-2"></i>
     <i v-else class="bi bi-toggle-on text-blue-500 text-xl mr-2"></i
     ><span>Dark Mode</span>
   </button>

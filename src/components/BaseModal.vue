@@ -32,7 +32,7 @@
                 class="rounded-full dark:bg-gray-700 bg-gray-200 p-1"
               >
                 <i
-                  class="bi bi-x text-gray-500 text-2xl"
+                  class="bi bi-x dark:text-gray-400 text-gray-600 text-2xl"
                 ></i>
               </button>
             </div>

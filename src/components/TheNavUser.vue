@@ -2,8 +2,8 @@
   <div v-if="user">
     <base-dropdown position="right">
       <template v-slot:button>
-        <button class="hover:bg-gray-200 rounded-full p-2">
-          <i class="bi bi-person text-2xl text-gray-500"></i>
+        <button class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full p-2">
+          <i class="bi bi-person text-2xl dark:text-gray-400 text-gray-600"></i>
         </button>
       </template>
       <template v-slot:items>
@@ -21,7 +21,7 @@
           <router-link
             :to="{ name: 'Settings' }"
             class="w-full px-4 py-1 flex items-center"
-            ><i class="bi bi-gear text-gray-500 text-xl mr-2"></i
+            ><i class="bi bi-gear dark:text-gray-400 text-gray-600 text-xl mr-2"></i
             ><span>Settings</span></router-link
           >
         </base-dropdown-item>
