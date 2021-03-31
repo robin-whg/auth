@@ -18,7 +18,7 @@ export default {
         TheNavUser
     },
   setup() {
-    const name = ref("Name");
+    const name = ref("Auth");
 
     return { name };
   },
