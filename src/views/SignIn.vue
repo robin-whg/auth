@@ -27,6 +27,7 @@
       <base-button
         type="submit"
         color="blue-600"
+        :loading="loading"
         class="bg-blue-600 hover:bg-blue-700 text-gray-50 w-full mb-2"
         >Sign In</base-button
       >
