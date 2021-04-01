@@ -29,7 +29,7 @@
             <div class="justify-self-end flex items-center justify-center">
               <base-button
                 @click="close"
-                class="rounded-full btn-bg-secondary p-1"
+                class="rounded-full btn-text-secondary p-1"
               >
                 <i
                   class="bi bi-x text-2xl"
