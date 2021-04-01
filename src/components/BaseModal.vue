@@ -23,7 +23,7 @@
         >
 
         <div
-          class="inline-block align-bottom bg-gray-100 dark:bg-gray-800 rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full"
+          class="inline-block align-bottom bg-2 rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full"
         >
           <div class="grid grid-cols-1 p-4">
             <div class="justify-self-end flex items-center justify-center">
