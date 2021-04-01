@@ -12,9 +12,9 @@
         >
       </template>
     </base-modal>
-      <base-button @click="modal = true" class="bg-primary"
-        >modal</base-button
-      >
+    <base-button @click="modal = true" class="btn-text-primary"
+      >modal</base-button
+    >
     <div class="max-w-sm grid grid-cols-3 gap-2">
       <div v-for="variant in buttonVariants" :key="variant">
         <base-button :class="variant">Button</base-button>
@@ -28,7 +28,17 @@ import { ref } from "vue";
 export default {
   setup() {
     const modal = ref(false);
-    const buttonVariants = ref(['text-primary', 'alert-primary', 'bg-primary', 'text-danger', 'alert-danger', 'bg-danger'])
+    const buttonVariants = ref([
+      "btn-text-primary",
+      "btn-alert-primary",
+      "btn-bg-primary",
+      "btn-text-danger",
+      "btn-alert-danger",
+      "btn-bg-danger",
+      "btn-text-secondary",
+      "btn-alert-secondary",
+      "btn-bg-secondary"
+    ]);
     function close() {
       modal.value = false;
     }

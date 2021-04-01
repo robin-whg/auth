@@ -2,7 +2,7 @@
   <button
     :disabled="loading"
     :class="{ 'cursor-default': loading }"
-    class="py-2 px-4 font-semibold rounded-lg focus:outline-none focus:ring-none"
+    class="btn"
   >
     <div class="flex items-center justify-center">
       <span :class="{ slot: loading }">

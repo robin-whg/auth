@@ -2,9 +2,9 @@
   <div v-if="user">
     <base-dropdown position="right">
       <template v-slot:button>
-        <button class="hover:bg-gray-200 dark:hover:bg-gray-700 text-secondary rounded-full p-2">
+        <base-button class="btn-text-secondary rounded-full p-2">
           <i class="bi bi-person text-2xl"></i>
-        </button>
+        </base-button>
       </template>
       <template v-slot:items>
         <div class="whitespace-nowrap pb-3 px-4">
@@ -42,12 +42,12 @@
   <div v-else>
     <base-button
       @click="$router.push({ name: 'SignIn' })"
-      class="hover:bg-gray-100 mr-2"
+      class="btn-text-primary mr-2"
       >Sign In</base-button
     >
     <base-button
       @click="$router.push({ name: 'SignUp' })"
-      class="bg-blue-500 text-gray-50"
+      class="btn-bg-primary"
       >Sign Up</base-button
     >
   </div>
@@ -61,7 +61,7 @@ import DarkModeToggle from "@/components/DarkModeToggle.vue";
 
 export default {
   components: {
-    DarkModeToggle,
+    DarkModeToggle
   },
   setup() {
     const router = useRouter();

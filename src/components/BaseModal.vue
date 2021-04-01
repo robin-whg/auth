@@ -27,14 +27,14 @@
         >
           <div class="grid grid-cols-1 p-4">
             <div class="justify-self-end flex items-center justify-center">
-              <button
+              <base-button
                 @click="close"
-                class="rounded-full dark:bg-gray-700 bg-gray-200 p-1"
+                class="rounded-full btn-bg-secondary p-1"
               >
                 <i
-                  class="bi bi-x dark:text-gray-400 text-gray-600 text-2xl"
+                  class="bi bi-x text-2xl"
                 ></i>
-              </button>
+              </base-button>
             </div>
             <div class="mb-8">
               <slot />

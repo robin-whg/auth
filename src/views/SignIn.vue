@@ -28,7 +28,7 @@
         type="submit"
         color="blue-600"
         :loading="loading"
-        class="bg-blue-500 text-gray-50 w-full mb-2"
+        class="btn-bg-primary w-full mb-2"
         >Sign In</base-button
       >
       <p class="text-red-500">
