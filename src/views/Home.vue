@@ -7,10 +7,19 @@
         <p>You can't undo this action.</p>
       </template>
       <template v-slot:footer>
-        <base-button @click="confirm" class="bg-red-500 text-gray-50">Delete</base-button>
+        <base-button @click="confirm" class="text-red-700 bg-red-200"
+          >Delete</base-button
+        >
       </template>
     </base-modal>
-    <button @click="modal = true">modal</button>
+      <base-button @click="modal = true" class="bg-primary"
+        >modal</base-button
+      >
+    <div class="max-w-sm grid grid-cols-3 gap-2">
+      <div v-for="variant in buttonVariants" :key="variant">
+        <base-button :class="variant">Button</base-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +28,7 @@ import { ref } from "vue";
 export default {
   setup() {
     const modal = ref(false);
+    const buttonVariants = ref(['text-primary', 'alert-primary', 'bg-primary', 'text-danger', 'alert-danger', 'bg-danger'])
     function close() {
       modal.value = false;
     }
@@ -26,7 +36,7 @@ export default {
       console.log("confirm");
       modal.value = false;
     }
-    return { modal, close, confirm };
+    return { modal, close, confirm, buttonVariants };
   },
 };
 </script>

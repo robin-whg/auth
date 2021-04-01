@@ -17,7 +17,13 @@ module.exports = {
       },
     extend: {
       colors: {
-        "primary-color": "var(--primary-color)",
+        primary: {
+          lightest: 'var(--primary-lightest)',
+          light: 'var(--primary-light)',
+          DEFAULT: 'var(--primary)',
+          dark: 'var(--primary-dark)',
+          darkest: 'var(--primary-darkest)'
+        }
       }
     },
   },
