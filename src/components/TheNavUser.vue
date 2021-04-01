@@ -14,6 +14,7 @@
           </p>
           <p class="font-semibold" v-else>{{ user.email }}</p>
         </div>
+        <hr class="border-gray-200 mb-2 dark:border-gray-700">
         <base-dropdown-item>
           <dark-mode-toggle></dark-mode-toggle>
         </base-dropdown-item>
@@ -25,6 +26,7 @@
             ><span>Settings</span></router-link
           >
         </base-dropdown-item>
+        <hr class="border-gray-200 my-2 dark:border-gray-700">
         <base-dropdown-item>
           <button
             @click="signOut()"
