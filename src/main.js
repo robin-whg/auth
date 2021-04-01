@@ -1,9 +1,11 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import store from './store'
 import router from "./router";
 import "./assets/style.css";
 
-import { auth, setUser } from "@/firebase.js";
+import { auth } from "@/firebase.js";
+//import store from './store'
 
 const requireComponent = require.context(
   "./components",
@@ -13,9 +15,9 @@ const requireComponent = require.context(
 
 let app;
 auth.onAuthStateChanged((currentUser) => {
-  setUser(currentUser);
+  store.dispatch('auth/setUser', currentUser)
   if (!app) {
-    app = createApp(App).use(router);
+    app = createApp(App).use(store).use(router);
 
     requireComponent.keys().forEach((fileName) => {
       const componentConfig = requireComponent(fileName);

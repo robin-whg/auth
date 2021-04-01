@@ -14,7 +14,7 @@
           </p>
           <p class="font-semibold" v-else>{{ user.email }}</p>
         </div>
-        <hr class="border-gray-200 mb-2 dark:border-gray-700">
+        <hr class="border-gray-200 mb-2 dark:border-gray-700" />
         <base-dropdown-item>
           <dark-mode-toggle></dark-mode-toggle>
         </base-dropdown-item>
@@ -26,7 +26,7 @@
             ><span>Settings</span></router-link
           >
         </base-dropdown-item>
-        <hr class="border-gray-200 my-2 dark:border-gray-700">
+        <hr class="border-gray-200 my-2 dark:border-gray-700" />
         <base-dropdown-item>
           <button
             @click="signOut()"
@@ -54,32 +54,31 @@
 </template>
 
 <script>
-import { auth, state } from "@/firebase.js";
-import { useRouter, useRoute } from "vue-router";
-import { computed } from "vue";
-import DarkModeToggle from "@/components/DarkModeToggle.vue";
-
+import { auth } from '@/firebase.js'
+import DarkModeToggle from '@/components/DarkModeToggle.vue'
 export default {
   components: {
-    DarkModeToggle
+    DarkModeToggle,
   },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const user = computed(() => {
-      return state.user;
-    });
-    async function signOut() {
+  data() {
+    return {};
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    },
+  },
+  methods: {
+    async signOut() {
       try {
         await auth.signOut();
-        if (route.meta.requiresAuth) {
-          router.push({ name: "Home" });
+        if (this.$route.meta.requiresAuth) {
+          this.$router.push({ name: "Home" });
         }
       } catch (error) {
         console.log(error);
       }
-    }
-    return { user, signOut };
+    },
   },
 };
 </script>

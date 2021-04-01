@@ -1,6 +1,5 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { reactive } from 'vue'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCjCBA88JhXkAJ_IXds-fl4AL01N5MbESY",
@@ -15,7 +14,3 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth()
-
-export const state = reactive({ user: {} })
-export const getUser = () => { return state.user }
-export const setUser = (x) => { state.user = x }
