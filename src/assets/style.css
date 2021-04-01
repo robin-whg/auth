@@ -13,7 +13,7 @@
   --primary-darkest: #1d4ed8;
 }
 
-@layer components {
+@layer base {
   h1 {
     @apply text-5xl font-bold;
   },
@@ -26,9 +26,9 @@
   i {
     @apply text-2xl flex items-center justify-items-center;
   }
-  .btn {
-    @apply py-2 px-4 font-semibold rounded-lg;
-  },
+}
+
+@layer components {
   .bg-1 {
     @apply bg-gray-50 dark:bg-gray-900;
   },
@@ -180,4 +180,5 @@
   }
 }
 
+/*@import "./BaseStyles.css";*/
 @import "./nprogress.css";

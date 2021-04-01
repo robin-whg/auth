@@ -2,7 +2,7 @@
   <button
     :disabled="loading"
     :class="{ 'cursor-default': loading }"
-    class="btn"
+    class="base-button"
   >
     <div class="flex items-center justify-center">
       <span :class="{ slot: loading }">
@@ -33,6 +33,9 @@ export default {
 </script>
 
 <style scoped>
+.base-button {
+  @apply px-4 py-2 rounded-lg;
+}
 .slot {
   visibility: hidden;
 }
