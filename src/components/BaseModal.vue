@@ -1,7 +1,7 @@
 <template>
   <teleport to="#modal">
     <div
-      class="fixed z-50 inset-0 overflow-y-auto text-gray-900 dark:text-gray-50"
+      class="fixed z-40 inset-0 overflow-y-auto text-gray-900 dark:text-gray-50"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
@@ -23,7 +23,7 @@
         >
 
         <base-card
-          class="inline-block text-left align-bottom overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full"
+          class="bg-gray-100 dark:bg-gray-800 inline-block text-left align-bottom overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full"
         >
           <div class="grid grid-cols-1">
             <div class="justify-self-end flex items-center justify-center">
