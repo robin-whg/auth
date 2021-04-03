@@ -1,5 +1,6 @@
 <template>
-  <template v-if="user">
+<div class="flex">
+ <template v-if="user">
     <base-dropdown position="right">
       <template #button>
         <base-button size="sm" class="btn-text-secondary rounded-full">
@@ -44,6 +45,7 @@
       >Sign Up</base-button
     >
   </template>
+</div>
 </template>
 
 <script>
