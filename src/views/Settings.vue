@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mx-auto">
         <h1>Settings</h1>
     </div>
 </template>
