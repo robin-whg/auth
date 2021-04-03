@@ -1,7 +1,6 @@
 <template>
   <template v-if="user">
     <base-dropdown position="right">
-
       <template #button>
         <base-button size="sm" class="btn-text-secondary rounded-full">
           <i class="bi bi-person text-2xl" />
@@ -19,9 +18,7 @@
           </p>
         </div>
         <hr class="border-gray-200 mb-2 dark:border-gray-700" />
-        <base-dropdown-item>
-          <dark-mode-toggle />
-        </base-dropdown-item>
+        <the-nav-user-dark-mode-switch />
         <base-dropdown-item @click="$router.push({ name: 'Settings' })">
           <i class="bi bi-gear text-secondary text-xl mr-2" />
           <span>Settings</span>
@@ -32,7 +29,6 @@
           <span>Sign Out</span>
         </base-dropdown-item>
       </template>
-
     </base-dropdown>
   </template>
 
@@ -52,10 +48,10 @@
 
 <script>
 import { auth } from "@/firebase.js";
-import DarkModeToggle from "@/components/DarkModeToggle.vue";
+import TheNavUserDarkModeSwitch from "@/components/TheNavUserDarkModeSwitch.vue";
 export default {
   components: {
-    DarkModeToggle,
+    TheNavUserDarkModeSwitch,
   },
   data() {
     return {};

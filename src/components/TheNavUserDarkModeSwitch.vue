@@ -1,11 +1,11 @@
 <template>
   <button
     @click="toggle()"
-    class="text-left w-full px-4 py-1 flex items-center"
+    class="text-left w-full px-4 py-1 flex items-center hover:bg-gray-200 dark:hover:bg-gray-700"
   >
-    <i v-if="!darkMode" class="bi bi-toggle-off text-secondary text-xl mr-2"></i>
-    <i v-else class="bi bi-toggle-on text-primary text-xl mr-2"></i
-    ><span>Dark Mode</span>
+    <i v-if="!darkMode" class="bi bi-toggle-off text-secondary text-xl mr-2" />
+    <i v-else class="bi bi-toggle-on text-primary text-xl mr-2" />
+    <span>Dark Mode</span>
   </button>
 </template>
 
