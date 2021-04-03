@@ -14,9 +14,15 @@
         >
       </template>
     </base-modal>
-    <base-button @click="modal = true" class="btn-text-primary"
-      >modal</base-button
+    <base-spinner/>
+    <base-button circle @click="modal = true" class="mb-2 btn-bg-primary"
+      >
+        Modal
+      </base-button
     >
+    <base-button class="btn-bg-success mb-2" size="sm">test</base-button>
+    <base-button class="btn-bg-warning mb-2">test</base-button>
+    <base-button class="btn-bg-danger mb-2" size="lg">test</base-button>
     <div class="max-w-sm grid grid-cols-3 gap-2">
       <div v-for="variant in buttonVariants" :key="variant">
         <base-button :class="variant">Button</base-button>
