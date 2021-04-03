@@ -4,14 +4,17 @@
   >
     <the-navbar />
     <router-view />
+    <the-alert-list />
   </div>
 </template>
 
 <script>
 import TheNavbar from "@/layout/TheNavbar.vue";
+import TheAlertList from '@/layout/TheAlertList.vue';
 export default {
   components: {
     TheNavbar,
+    TheAlertList
   },
   setup() {
     function setDarkModeClass() {
