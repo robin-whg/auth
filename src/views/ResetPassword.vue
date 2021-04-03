@@ -23,10 +23,7 @@
       </p>
       <p class="text-center">
         Back to
-        <router-link
-          class="text-blue-500"
-          :to="{ name: 'SignIn' }"
-        >
+        <router-link class="text-blue-500" :to="{ name: 'SignIn' }">
           Sign In
         </router-link>
       </p>
@@ -35,43 +32,43 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import { auth } from "@/firebase.js";
 export default {
-  setup() {
-    const email = ref("");
-    const loading = ref(false);
-    const error = ref("");
-    const errorEmail = ref("");
-    async function submit() {
-      loading.value = true;
-      errorEmail.value = "";
-      error.value = "";
+  data() {
+    return {
+      email: "",
+      errorEmail: "",
+      loading: false,
+      error: "",
+    };
+  },
+  methods: {
+    async submit() {
+      this.loading = true;
+      this.errorEmail = "";
+      this.error = "";
       try {
         if (
-          !email.value ||
-          !email.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)
+          !this.email||
+          !this.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)
         ) {
-          errorEmail.value = "Please enter a valid e-mail.";
+          this.errorEmail = "Please enter a valid e-mail.";
         }
-        if (!errorEmail.value) {
-          await auth.sendPasswordResetEmail(email.value);
-          email.value = "";
-          alert("email sent");
+        if (!this.errorEmail) {
+          await auth.sendPasswordResetEmail(this.email);
+          this.email= "";
+          const alert = {
+            type: "success",
+            message: "Email sent.",
+          };
+          this.$store.dispatch("alert/add", alert);
         }
       } catch (err) {
         console.log(err);
-        error.value = err.message;
+        this.error = err.message;
       }
-      loading.value = false;
-    }
-    return {
-      email,
-      submit,
-      loading,
-      error,
-      errorEmail,
-    };
+      this.loading = false;
+    },
   },
 };
 </script>
