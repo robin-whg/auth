@@ -1,7 +1,7 @@
 <template>
-  <li class="w-100 whitespace-nowrap flex items-center hover:bg-gray-200 dark:hover:bg-gray-700">
+  <button class="w-full whitespace-nowrap px-4 py-1 flex items-center hover:bg-gray-200 dark:hover:bg-gray-700">
     <slot />
-  </li>
+  </button>
 </template>
 
 <script>

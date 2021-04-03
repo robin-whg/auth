@@ -7,19 +7,19 @@
     >
       <slot name="button" />
     </div>
-    <ul
+    <div
       id="dropdown-items"
       v-if="isVisible"
       class="z-10 absolute shadow overflow-hidden rounded-xl mt-2 py-2 bg-2"
-      :class="pos"
+      :class="position === 'right' ? 'right-0' : 'left-0'"
     >
       <slot name="items" />
-    </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 export default {
   props: {
     position: {
@@ -27,7 +27,7 @@ export default {
       default: "left",
     },
   },
-  setup(props) {
+  setup() {
     const isVisible = ref(false);
     const dropdown = ref(null);
     function addEventListeners() {
@@ -46,15 +46,11 @@ export default {
         e.stopPropagation();
       });
     }
-    const pos = computed(() => {
-      return props.position === "right" ? "right-0" : "left-0";
-    });
     return {
       isVisible,
       addEventListeners,
       removeEventListeners,
       dropdown,
-      pos
     };
   },
   mounted() {
