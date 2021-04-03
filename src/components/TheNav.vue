@@ -1,5 +1,5 @@
 <template>
-  <nav v-show="!$route.meta.noNav" class="flex justify-between px-4 py-2 items-center">
+  <nav v-show="!$route.meta.fullscreen" class="flex justify-between px-4 py-2 items-center">
     <router-link class="flex text-xl items-center" to="/">
       <img src="@/assets/logo.svg" class="h-8 w-auto mr-1" alt="logo" />
       <span>{{ name }} </span>

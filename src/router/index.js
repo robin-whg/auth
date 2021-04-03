@@ -21,7 +21,7 @@ const routes = [
     name: "SignUp",
     component: () => import("../views/SignUp.vue"),
     meta: {
-      noNav: true
+      fullscreen: true
     }
   },
   {
@@ -29,7 +29,7 @@ const routes = [
     name: "SignIn",
     component: () => import("../views/SignIn.vue"),
     meta: {
-      noNav: true
+      fullscreen: true
     }
   },
   {
@@ -37,7 +37,7 @@ const routes = [
     name: "ResetPassword",
     component: () => import("../views/ResetPassword.vue"),
     meta: {
-      noNav: true
+      fullscreen: true
     }
   },
   {
