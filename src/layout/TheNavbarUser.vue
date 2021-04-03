@@ -18,7 +18,7 @@
           </p>
         </div>
         <hr class="border-gray-200 mb-2 dark:border-gray-700" />
-        <the-nav-user-dark-mode-switch />
+        <the-navbar-user-dark-mode-switch />
         <base-dropdown-item @click="$router.push({ name: 'Settings' })">
           <i class="bi bi-gear text-secondary text-xl mr-2" />
           <span>Settings</span>
@@ -48,10 +48,10 @@
 
 <script>
 import { auth } from "@/firebase.js";
-import TheNavUserDarkModeSwitch from "@/components/TheNavUserDarkModeSwitch.vue";
+import TheNavbarUserDarkModeSwitch from "@/layout/TheNavbarUserDarkModeSwitch.vue";
 export default {
   components: {
-    TheNavUserDarkModeSwitch,
+    TheNavbarUserDarkModeSwitch,
   },
   data() {
     return {};

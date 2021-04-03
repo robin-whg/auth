@@ -2,16 +2,16 @@
   <div
     class="text-gray-900 dark:text-gray-50 bg-1 min-h-screen"
   >
-    <the-nav></the-nav>
+    <the-navbar />
     <router-view />
   </div>
 </template>
 
 <script>
-import TheNav from "@/components/TheNav.vue";
+import TheNavbar from "@/layout/TheNavbar.vue";
 export default {
   components: {
-    TheNav,
+    TheNavbar,
   },
   setup() {
     function setDarkModeClass() {
