@@ -69,7 +69,11 @@ export default {
           this.$router.push({ name: "Home" });
         }
       } catch (error) {
-        console.log(error);
+        const alert = {
+          type: 'danger',
+          message: error
+        }
+        this.$store.dispatch('alert/add', alert);
       }
     },
   },
