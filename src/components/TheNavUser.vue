@@ -3,8 +3,8 @@
     <base-dropdown position="right">
 
       <template #button>
-        <base-button class="btn-text-secondary rounded-full p-2">
-          <i class="bi bi-person text-2xl"></i>
+        <base-button size="sm" class="btn-text-secondary rounded-full">
+          <i class="bi bi-person text-2xl" />
         </base-button>
       </template>
 
@@ -20,15 +20,15 @@
         </div>
         <hr class="border-gray-200 mb-2 dark:border-gray-700" />
         <base-dropdown-item>
-          <dark-mode-toggle></dark-mode-toggle>
+          <dark-mode-toggle />
         </base-dropdown-item>
         <base-dropdown-item @click="$router.push({ name: 'Settings' })">
-          <i class="bi bi-gear text-secondary text-xl mr-2"></i>
+          <i class="bi bi-gear text-secondary text-xl mr-2" />
           <span>Settings</span>
         </base-dropdown-item>
         <hr class="border-gray-200 my-2 dark:border-gray-700" />
         <base-dropdown-item @click="signOut()">
-          <i class="bi bi-box-arrow-right text-danger text-xl mr-2"></i>
+          <i class="bi bi-box-arrow-right text-danger text-xl mr-2" />
           <span>Sign Out</span>
         </base-dropdown-item>
       </template>

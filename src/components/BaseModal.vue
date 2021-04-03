@@ -29,12 +29,12 @@
             <div class="justify-self-end flex items-center justify-center">
               <base-button
                 @click="close"
-                class="rounded-full btn-text-secondary p-1"
+                pill
+                size="sm"
+                class="btn-bg-secondary"
               >
-                <i
-                  class="bi bi-x text-2xl"
-                ></i>
-              </base-button>
+                <i class="bi bi-x text-2xl" />
+             </base-button>
             </div>
             <div class="mb-8">
               <slot />
