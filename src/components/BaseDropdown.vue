@@ -10,7 +10,7 @@
     <div
       id="dropdown-items"
       v-if="isVisible"
-      class="z-10 absolute shadow overflow-hidden rounded-xl mt-2 py-2 bg-2"
+      class="z-10 absolute shadow overflow-hidden rounded-xl mt-2 py-2 bg-gray-100 dark:bg-gray-800"
       :class="position === 'right' ? 'right-0' : 'left-0'"
     >
       <slot name="items" />

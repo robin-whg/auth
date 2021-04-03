@@ -22,16 +22,16 @@
           >&#8203;</span
         >
 
-        <div
-          class="inline-block align-bottom bg-2 rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full"
+        <base-card
+          class="inline-block text-left align-bottom overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full"
         >
-          <div class="grid grid-cols-1 p-4">
+          <div class="grid grid-cols-1">
             <div class="justify-self-end flex items-center justify-center">
               <base-button
                 @click="close"
                 pill
                 size="sm"
-                class="btn-bg-secondary"
+                class="btn-text-secondary"
               >
                 <i class="bi bi-x text-2xl" />
              </base-button>
@@ -43,7 +43,7 @@
               <slot name="footer" />
             </div>
           </div>
-        </div>
+        </base-card>
       </div>
     </div>
   </teleport>
