@@ -1,11 +1,12 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container p-4 mx-auto">
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
-    <base-badge class="alert-danger">
-      Badge
-    </base-badge>
+    <span>This is a span</span>
+    <base-badge class="alert-danger"> Badge </base-badge>
+    <base-badge class="alert-success"> Badge </base-badge>
+
     <base-modal v-if="modal" @close-event="close">
       <template v-slot:default>
         <h1>Are you sure?</h1>
@@ -17,12 +18,10 @@
         >
       </template>
     </base-modal>
-    <base-spinner/>
-    <base-button circle @click="modal = true" class="mb-2 btn-bg-primary"
-      >
-        Modal
-      </base-button
-    >
+    <base-spinner />
+    <base-button @click="modal = true" class="mb-2 btn-bg-primary">
+      Modal
+    </base-button>
     <base-button class="btn-bg-success mb-2" size="sm">test</base-button>
     <base-button class="btn-bg-warning mb-2">test</base-button>
     <base-button class="btn-bg-danger mb-2" size="lg">test</base-button>
@@ -48,7 +47,7 @@ export default {
       "btn-bg-danger",
       "btn-text-secondary",
       "btn-alert-secondary",
-      "btn-bg-secondary"
+      "btn-bg-secondary",
     ]);
     function close() {
       modal.value = false;
