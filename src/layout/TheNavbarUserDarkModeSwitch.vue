@@ -1,11 +1,14 @@
 <template>
   <button
     @click="toggle()"
-    class="text-left w-full px-4 py-1 flex items-center hover:bg-gray-200 dark:hover:bg-gray-700"
+    class="text-left w-full px-4 py-1 flex justify-between items-center hover:bg-gray-200 dark:hover:bg-gray-700"
   >
-    <i v-if="!darkMode" class="bi bi-toggle-off text-secondary text-xl mr-2" />
-    <i v-else class="bi bi-toggle-on text-primary text-xl mr-2" />
-    <span>Dark Mode</span>
+    <div>
+      <i class="bi bi-moon text-secondary text-xl mr-2" />
+      <span>Dark Mode</span>
+    </div>
+    <i v-if="!darkMode" class="bi bi-toggle-off text-secondary text-xl" />
+    <i v-else class="bi bi-toggle-on text-primary text-xl" />
   </button>
 </template>
 
@@ -23,11 +26,13 @@ export default {
     });
     function toggle() {
       if (darkMode.value) {
-        document.cookie = "darkMode=false; expires= Thu, 21 Aug 2050 20:00:00 UTC; path=/;SameSite=Lax"
-        document.querySelector('body').classList.remove('dark')
+        document.cookie =
+          "darkMode=false; expires= Thu, 21 Aug 2050 20:00:00 UTC; path=/;SameSite=Lax";
+        document.querySelector("body").classList.remove("dark");
       } else {
-        document.cookie = "darkMode=true; expires= Thu, 21 Aug 2050 20:00:00 UTC; path=/;SameSite=Lax"
-        document.querySelector('body').classList.add('dark')
+        document.cookie =
+          "darkMode=true; expires= Thu, 21 Aug 2050 20:00:00 UTC; path=/;SameSite=Lax";
+        document.querySelector("body").classList.add("dark");
       }
       cookie.value = document.cookie;
     }
