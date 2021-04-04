@@ -3,7 +3,7 @@
  <template v-if="user">
     <base-dropdown position="right">
       <template #button>
-        <base-button size="sm" class="btn-text-secondary rounded-full">
+        <base-button pill size="sm" class="btn-text-secondary">
           <i class="bi bi-person text-2xl" />
         </base-button>
       </template>
