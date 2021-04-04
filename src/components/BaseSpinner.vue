@@ -1,12 +1,14 @@
 <template>
-  <svg
-    :class="[width]"
-    class="animate-spin mx-auto h-auto"
-    viewBox="0 0 100 100"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="50" cy="50" r="45" />
-  </svg>
+  <div class="inline-flex justify-center items-center">
+    <svg
+      :class="[width]"
+      class="animate-spin h-auto"
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="50" cy="50" r="45" />
+    </svg>
+  </div>
 </template>
 
 <script>
