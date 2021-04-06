@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/functions"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCjCBA88JhXkAJ_IXds-fl4AL01N5MbESY",
@@ -11,6 +12,13 @@ const firebaseConfig = {
   appId: "1:140444113176:web:b8b0a9f4c8289debe9a66d",
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
+export const functions = app.functions("europe-west1");
 
 export const auth = firebase.auth()
+
+if(window.location.hostname === 'localhost') {
+  console.log('%c 🚨 localhost detected', 'color: red;')
+  functions.useEmulator("localhost", 5001);
+}
