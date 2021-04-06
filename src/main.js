@@ -5,7 +5,6 @@ import router from "./router";
 import "./assets/style.css";
 
 import { auth } from "@/firebase.js";
-//import store from './store'
 
 const requireComponent = require.context(
   "./components",
