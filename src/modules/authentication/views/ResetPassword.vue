@@ -61,7 +61,7 @@ export default {
             type: "success",
             message: "Email sent.",
           };
-          this.$store.dispatch("alert/add", alert);
+          this.$store.dispatch("core/addAlert", alert);
         }
       } catch (err) {
         console.log(err);

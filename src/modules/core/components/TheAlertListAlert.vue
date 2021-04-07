@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     remove() {
-      this.$store.dispatch('alert/remove', this.alert);
+      this.$store.dispatch('core/removeAlert', this.alert);
     },
   },
   mounted() {

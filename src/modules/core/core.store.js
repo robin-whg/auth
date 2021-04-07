@@ -8,22 +8,22 @@ export const state = {
 let nextId = 1;
 
 export const mutations = {
-  ADD(state, alert) {
+  ADD_ALERT(state, alert) {
     state.alerts.push({
       ...alert,
       id: nextId++,
     });
   },
-  REMOVE(state, alert) {
+  REMOVE_ALERT(state, alert) {
     state.alerts = state.alerts.filter((x) => x.id !== alert.id);
   },
 };
 
 export const actions = {
-  add({ commit }, alert) {
-    commit("ADD", alert);
+  addAlert({ commit }, alert) {
+    commit("ADD_ALERT", alert);
   },
-  remove({ commit }, alert) {
-    commit("REMOVE", alert);
+  removeAlert({ commit }, alert) {
+    commit("REMOVE_ALERT", alert);
   },
 };
