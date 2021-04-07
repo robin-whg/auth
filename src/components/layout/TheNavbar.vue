@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import TheNavbarUser from "@/layout/TheNavbarUser.vue";
+import TheNavbarUser from "./TheNavbarUser.vue";
 export default {
   components: {
     TheNavbarUser,

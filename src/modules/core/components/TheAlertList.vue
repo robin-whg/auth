@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import TheAlertListAlert from '@/layout/TheAlertListAlert.vue'
+import TheAlertListAlert from './TheAlertListAlert.vue'
 export default {
     components: {
         TheAlertListAlert
     },
     computed: {
-        alerts() { return this.$store.state.alert.alerts }
+        alerts() { return this.$store.state.core.alerts }
     },
 };
 </script>

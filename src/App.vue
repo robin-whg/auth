@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import TheNavbar from "@/layout/TheNavbar.vue";
-import TheAlertList from '@/layout/TheAlertList.vue';
+import TheNavbar from "@/components/layout/TheNavbar.vue";
+import TheAlertList from '@/modules/core/components/TheAlertList.vue';
 export default {
   components: {
     TheNavbar,

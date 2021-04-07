@@ -7,14 +7,14 @@ import "./assets/style.css";
 import { auth } from "@/firebase.js";
 
 const requireComponent = require.context(
-  "./components",
+  "./components/base",
   false,
   /Base[A-Z]\w+\.(vue|js)$/
 );
 
 let app;
 auth.onAuthStateChanged((currentUser) => {
-  store.dispatch('auth/setUser', currentUser)
+  store.dispatch('authentication/setUser', currentUser)
   if (!app) {
     app = createApp(App).use(store).use(router);
 

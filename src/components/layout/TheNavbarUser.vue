@@ -50,7 +50,7 @@
 
 <script>
 import { auth } from "@/firebase.js";
-import TheNavbarUserDarkModeSwitch from "@/layout/TheNavbarUserDarkModeSwitch.vue";
+import TheNavbarUserDarkModeSwitch from "./TheNavbarUserDarkModeSwitch.vue";
 export default {
   components: {
     TheNavbarUserDarkModeSwitch,
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.auth.user;
+      return this.$store.state.authentication.user;
     },
   },
   methods: {
