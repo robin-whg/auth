@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import TheNavbarUser from "./TheNavbarUser.vue";
+import TheNavbarUser from "../../modules/authentication/components/AvatarDropdown.vue";
 export default {
   components: {
     TheNavbarUser,
