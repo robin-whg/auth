@@ -11,7 +11,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    core,
     authentication,
+    core,
   }
 })

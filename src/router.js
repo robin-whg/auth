@@ -1,13 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import NProgress from 'nprogress'
-import { auth } from '@/firebase.js'
 
 import { router as core } from '@/modules/core/index.js'
-import { router as authentication } from '@/modules/authentication/index.js'
+import { router as authentication, service as authenticationService } from '@/modules/authentication/index.js'
 
 const routes = [
-  ...core,
   ...authentication,
+  ...core,
 ];
 
 const router = createRouter({
@@ -17,7 +16,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if(!auth.currentUser && to.meta.requiresAuth) next({ name: 'SignIn' })
+  if(!authenticationService.auth.currentuser && to.meta.requiresauth) next({ name: 'SignIn' })
   else next()
 })
 

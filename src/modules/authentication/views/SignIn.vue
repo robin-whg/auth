@@ -50,7 +50,7 @@
 <script>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { auth } from "@/firebase.js";
+import { auth } from "../authentication.service";
 export default {
   setup() {
     const router = useRouter();

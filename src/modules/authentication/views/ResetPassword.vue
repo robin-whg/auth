@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { auth } from "@/firebase.js";
+import { auth } from "../authentication.service";
 export default {
   data() {
     return {

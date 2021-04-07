@@ -1,5 +1,5 @@
-import _router from './router/index.js'
-import * as _store from './store/index.js'
+import _router from './core.router.js'
+import * as _store from './core.store.js'
 
 export const router = _router
 

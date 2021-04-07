@@ -12,11 +12,9 @@ const firebaseConfig = {
   appId: "1:140444113176:web:b8b0a9f4c8289debe9a66d",
 };
 
-const app = firebase.initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 
 export const functions = app.functions("europe-west1");
-
-export const auth = firebase.auth()
 
 if(window.location.hostname === 'localhost') {
   console.log('%c 🚨 localhost detected', 'color: red;')
