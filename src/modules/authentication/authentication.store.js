@@ -31,9 +31,30 @@ export const actions = {
   async signIn({ dispatch }, { email, password }) {
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      return true
+      return true;
     } catch (error) {
-      dispatch('core/addAlert', { type: 'danger', message: error.message }, { root: true })
+      dispatch(
+        "core/addAlert",
+        { type: "danger", message: error.message },
+        { root: true }
+      );
+    }
+  },
+  async resetPassword({ dispatch }, { email }) {
+    try {
+      await auth.sendPasswordResetEmail(email);
+      dispatch(
+        "core/addAlert",
+        { type: "success", message: "Reset email sent." },
+        { root: true }
+      );
+      return true;
+    } catch (error) {
+      dispatch(
+        "core/addAlert",
+        { type: "danger", message: error.message },
+        { root: true }
+      );
     }
   },
   signOut() {
