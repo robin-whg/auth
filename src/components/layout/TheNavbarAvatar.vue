@@ -4,7 +4,7 @@
       <base-dropdown position="right">
         <template #button>
           <base-button pill size="sm" class="btn-text-secondary">
-            <i class="bi bi-person text-2xl" />
+            <i class="bi bi-person-circle text-2xl" />
           </base-button>
         </template>
 
@@ -19,7 +19,7 @@
             </p>
           </div>
           <hr class="border-gray-200 mb-2 dark:border-gray-700" />
-          <avatar-dropdown-dark-mode-switch />
+          <the-navbar-avatar-dark-mode-toggle />
           <base-dropdown-item @click="$router.push({ name: 'Settings' })">
             <i class="bi bi-gear text-secondary text-xl mr-2" />
             <span>Settings</span>
@@ -49,11 +49,10 @@
 </template>
 
 <script>
-import { auth } from "@/firebase.js";
-import AvatarDropdownDarkModeSwitch from "./AvatarDropdownDarkModeSwitch.vue";
+import TheNavbarAvatarDarkModeToggle from "./TheNavbarAvatarDarkModeToggle.vue";
 export default {
   components: {
-    AvatarDropdownDarkModeSwitch,
+    TheNavbarAvatarDarkModeToggle,
   },
   data() {
     return {};
@@ -66,9 +65,9 @@ export default {
   methods: {
     async signOut() {
       try {
-        await auth.signOut();
+        await this.$store.dispatch("authentication/signOut");
         if (this.$route.meta.requiresAuth) {
-          this.$router.push({ name: "Home" });
+          this.$router.push({ name: "SignIn" });
         }
       } catch (error) {
         const alert = {

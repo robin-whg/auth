@@ -4,7 +4,6 @@ export const namespaced = true;
 
 export const state = {
   user: {},
-  test: "test",
 };
 
 export const mutations = {
@@ -17,20 +16,21 @@ export const actions = {
   setUser({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
       const unsubscribe = auth.onAuthStateChanged((user) => {
-        unsubscribe();
         commit("SET_USER", user);
+        unsubscribe();
         dispatch("bindUser");
-        console.log("setUser");
-        resolve(true);
+        resolve();
       }, reject);
     });
   },
-  async bindUser({ commit }) {
-    console.log("boundUser");
+  bindUser({ commit }) {
     auth.onAuthStateChanged((user) => {
       commit("SET_USER", user);
     });
   },
+  signOut() {
+    return auth.signOut()
+  }
 };
 
 export const getters = {

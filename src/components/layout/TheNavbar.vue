@@ -31,7 +31,7 @@
           <i v-if="!isVisible" class="bi bi-list text-2xl" />
           <i v-else class="bi bi-x text-2xl" />
         </base-button>
-        <the-navbar-user />
+        <the-navbar-avatar />
       </div>
     </div>
     <div v-if="isVisible" class="sm:hidden flex flex-col space-y-4 px-4 py-2">
@@ -45,10 +45,10 @@
 </template>
 
 <script>
-import TheNavbarUser from "../../modules/authentication/components/AvatarDropdown.vue";
+import TheNavbarAvatar from "./TheNavbarAvatar.vue";
 export default {
   components: {
-    TheNavbarUser,
+    TheNavbarAvatar,
   },
   data() {
     return {
