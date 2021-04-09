@@ -17,10 +17,7 @@
         label="Password"
         type="password"
       >
-        <router-link
-          class="text-blue-500"
-          :to="{ name: 'ResetPassword' }"
-        >
+        <router-link class="text-blue-500" :to="{ name: 'ResetPassword' }">
           Forgot Password?
         </router-link>
       </base-form-input>
@@ -31,60 +28,44 @@
         class="btn-bg-primary w-full mb-2"
         >Sign In</base-button
       >
-      <p class="text-red-500">
-        {{ error }}
-      </p>
     </form>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { auth } from "../authentication.service";
 export default {
-  setup() {
-    const router = useRouter();
-    const email = ref("");
-    const password = ref("");
-    const loading = ref(false);
-    const error = ref("");
-    const errorEmail = ref("");
-    const errorPassword = ref("");
-    async function submit() {
-      loading.value = true;
-      errorEmail.value = "";
-      errorPassword.value = "";
-      error.value = "";
-      try {
-        if (
-          !email.value ||
-          !email.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)
-        ) {
-          errorEmail.value = "Please enter a valid e-mail.";
-        }
-        if (!password.value) {
-          errorPassword.value = "Please a valid password.";
-        }
-        if (!errorEmail.value && !errorPassword.value) {
-          await auth.signInWithEmailAndPassword(email.value, password.value);
-          router.replace({ name: "Home" });
-        }
-      } catch (err) {
-        console.log(err);
-        error.value = err.message;
-      }
-      loading.value = false;
-    }
+  data() {
     return {
-      email,
-      password,
-      loading,
-      error,
-      errorEmail,
-      errorPassword,
-      submit,
+      loading: false,
+      email: "",
+      errorEmail: "",
+      password: "",
+      errorPassword: "",
     };
+  },
+  methods: {
+    async submit() {
+      this.loading = true;
+      this.errorEmail = "";
+      this.errorPassword = "";
+      if (
+        !this.email ||
+        !this.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)
+      ) {
+        this.errorEmail = "Please enter a valid email.";
+      }
+      if (!this.password) {
+        this.errorPassword = "Please enter a valid password.";
+      }
+      if (!this.errorEmail && !this.errorPassword) {
+        const res = await this.$store.dispatch("authentication/signIn", {
+          email: this.email,
+          password: this.password,
+        });
+        if (res) this.$router.replace({ name: "Home" });
+      }
+      this.loading = false;
+    },
   },
 };
 </script>

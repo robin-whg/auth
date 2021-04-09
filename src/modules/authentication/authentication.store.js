@@ -28,9 +28,17 @@ export const actions = {
       commit("SET_USER", user);
     });
   },
+  async signIn({ dispatch }, { email, password }) {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      return true
+    } catch (error) {
+      dispatch('core/addAlert', { type: 'danger', message: error.message }, { root: true })
+    }
+  },
   signOut() {
-    return auth.signOut()
-  }
+    return auth.signOut();
+  },
 };
 
 export const getters = {
@@ -38,6 +46,6 @@ export const getters = {
     return state.user;
   },
   isAuthenticated: (state) => {
-    return state.user ? true : false
+    return state.user ? true : false;
   },
 };
