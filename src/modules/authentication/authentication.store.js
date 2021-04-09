@@ -2,6 +2,7 @@ export const namespaced = true
 
 export const state = {
     user: {},
+    test: 'test'
 }
 
 export const mutations = {
@@ -19,5 +20,8 @@ export const actions = {
 export const getters = {
     getUser: state => {
         return state.user.uid
+    },
+    isAuthenticated: state => {
+        return 'uid' in state.user
     }
 }

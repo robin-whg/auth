@@ -4,7 +4,7 @@ import store from './store'
 import router from "./router";
 import "./assets/style.css";
 
-import { service as authenticationService } from "@/modules/authentication/";
+import { auth } from '@/firebase.js'
 
 const requireComponent = require.context(
   "./components/base",
@@ -13,8 +13,8 @@ const requireComponent = require.context(
 );
 
 let app;
-authenticationService.auth.onAuthStateChanged((currentUser) => {
-  store.dispatch('authentication/setUser', currentUser)
+auth.onAuthStateChanged((user) => {
+  store.dispatch('authentication/setUser', user)
   if (!app) {
     app = createApp(App).use(store).use(router);
 

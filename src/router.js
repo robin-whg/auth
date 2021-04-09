@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import NProgress from 'nprogress'
 
 import { router as core } from '@/modules/core/index.js'
-import { router as authentication, service as authenticationService } from '@/modules/authentication/index.js'
+import { router as authentication } from '@/modules/authentication/index.js'
+import store from './store'
 
 const routes = [
   ...authentication,
@@ -14,9 +15,10 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   NProgress.start()
-  if(!authenticationService.auth.currentuser && to.meta.requiresauth) next({ name: 'SignIn' })
+  const isAuthenticated = await store.getters['authentication/isAuthenticated']
+  if(!isAuthenticated && to.meta.requiresauth) next({ name: 'SignIn' })
   else next()
 })
 
