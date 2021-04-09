@@ -18,7 +18,10 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
   const isAuthenticated = await store.getters['authentication/isAuthenticated']
-  if(!isAuthenticated && to.meta.requiresauth) next({ name: 'SignIn' })
+  console.log(isAuthenticated)
+  console.log(store.state.authentication.user)
+console.log(to.meta.requiresAuth)
+  if(!isAuthenticated && to.meta.requiresAuth) next({ name: 'SignIn' })
   else next()
 })
 
