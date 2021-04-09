@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { auth } from "../authentication.service";
+import { auth } from "@/firebase.js";
 import AvatarDropdownDarkModeSwitch from "./AvatarDropdownDarkModeSwitch.vue";
 export default {
   components: {
