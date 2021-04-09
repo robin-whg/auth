@@ -3,9 +3,13 @@
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
-    <span>This is a span</span>
-    <base-badge class="alert-danger"> Badge </base-badge>
+
+    <base-badge class="alert-secondary"> Badge </base-badge>
+    <base-badge class="alert-info"> Badge </base-badge>
     <base-badge class="alert-success"> Badge </base-badge>
+    <base-badge class="alert-warning"> Badge </base-badge>
+    <base-badge class="alert-danger"> Badge </base-badge>
+    <base-badge class="alert-primary"> Badge </base-badge>
 
     <base-modal v-if="modal" @close-event="close">
       <template v-slot:default>
@@ -13,19 +17,25 @@
         <p>You can't undo this action.</p>
       </template>
       <template v-slot:footer>
-        <base-button @click="confirm" class="text-red-700 bg-red-200"
+        <base-button @click="confirm" class="btn-danger"
           >Delete</base-button
         >
       </template>
     </base-modal>
-    <base-spinner />
-    <base-button @click="modal = true" class="mb-2 btn-bg-primary">
+    <base-button @click="modal = true" class="mb-2 btn-primary">
       Modal
     </base-button>
-    <base-button class="btn-bg-success mb-2" size="sm">test</base-button>
-    <base-button class="btn-bg-warning mb-2">test</base-button>
-    <base-button class="btn-bg-danger mb-2" size="lg">test</base-button>
-    <div class="max-w-sm grid grid-cols-3 gap-2">
+    <base-button
+    class="btn-primary"
+      @click="
+        $store.dispatch('core/addAlert', {
+          type: 'success',
+          message: 'This in an alert.',
+        })
+      "
+      >Alert</base-button
+    >
+    <div class="max-w-xs grid grid-cols-2 gap-2">
       <div v-for="variant in buttonVariants" :key="variant">
         <base-button :class="variant">Button</base-button>
       </div>
@@ -33,21 +43,25 @@
   </div>
 </template>
 
+x
 <script>
 import { ref } from "vue";
 export default {
   setup() {
     const modal = ref(false);
     const buttonVariants = ref([
-      "btn-text-primary",
-      "btn-alert-primary",
-      "btn-bg-primary",
-      "btn-text-danger",
-      "btn-alert-danger",
-      "btn-bg-danger",
-      "btn-text-secondary",
-      "btn-alert-secondary",
-      "btn-bg-secondary",
+      "link-secondary",
+      "btn-secondary",
+      "link-info",
+      "btn-info",
+      "link-success",
+      "btn-success",
+      "link-warning",
+      "btn-warning",
+      "link-danger",
+      "btn-danger",
+      "link-primary",
+      "btn-primary"
     ]);
     function close() {
       modal.value = false;

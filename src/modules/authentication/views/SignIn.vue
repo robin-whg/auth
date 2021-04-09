@@ -17,7 +17,7 @@
         label="Password"
         type="password"
       >
-        <router-link class="text-blue-500" :to="{ name: 'ResetPassword' }">
+        <router-link class="link-primary" :to="{ name: 'ResetPassword' }">
           Forgot Password?
         </router-link>
       </base-form-input>
@@ -25,7 +25,7 @@
         type="submit"
         color="blue-600"
         :loading="loading"
-        class="btn-bg-primary w-full mb-2"
+        class="btn-primary w-full mb-2"
         >Sign In</base-button
       >
     </form>

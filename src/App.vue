@@ -1,6 +1,6 @@
 <template>
   <div
-    class="text-gray-900 dark:text-gray-50 bg-1 min-h-screen"
+    class="text-gray-900 dark:text-gray-50 bg-gray-50 dark:bg-gray-900 min-h-screen"
   >
     <the-navbar />
     <router-view />

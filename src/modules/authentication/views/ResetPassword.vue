@@ -14,13 +14,12 @@
       <base-button
         :loading="loading"
         type="submit"
-        color="blue-600"
-        class="btn-bg-primary w-full mb-2"
+        class="btn-primary w-full mb-2"
         >Reset Password</base-button
       >
       <p class="text-center">
         Back to
-        <router-link class="text-blue-500" :to="{ name: 'SignIn' }">
+        <router-link class="link-primary" :to="{ name: 'SignIn' }">
           Sign In
         </router-link>
       </p>

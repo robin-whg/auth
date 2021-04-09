@@ -16,164 +16,135 @@
 @layer base {
   h1 {
     @apply text-5xl font-bold;
-  },
+  }
+  ,
   h2 {
     @apply text-4xl font-semibold;
-  },
+  }
+  ,
   h3 {
     @apply text-3xl;
   }
 }
 
 @layer components {
-  .bg-1 {
-    @apply bg-gray-50 dark:bg-gray-900;
-  },
-  .bg-2 {
-    @apply bg-gray-100 dark:bg-gray-800;
-  },
   .text-primary {
-    @apply text-primary-dark dark:text-primary-light;
-  }
-  ,
-  .text-secondary {
-    @apply text-gray-600 dark:text-gray-400;
-  }
-  ,
-  .text-success {
-    @apply text-green-600 dark:text-green-400;
-  }
-  ,
-  .text-danger {
-    @apply text-red-600 dark:text-red-400;
-  }
-  ,
-  .text-warning {
-    @apply text-yellow-600 dark:text-yellow-400;
-  }
-  ,
-  .text-info {
-    @apply text-blue-600 dark:text-blue-400;
+    @apply text-orange-500;
   }
   ,
   .alert-primary {
-    @apply text-primary-darkest bg-primary-lightest;
-  }
-  ,
-  .alert-secondary {
-    @apply text-gray-700 bg-gray-200;
-  }
-  ,
-  .alert-success {
-    @apply text-green-700 bg-green-200;
-  }
-  ,
-  .alert-danger {
-    @apply text-red-700 bg-red-200;
-  }
-  ,
-  .alert-warning {
-    @apply text-yellow-700 bg-yellow-200;
-  }
-  ,
-  .alert-info {
-    @apply text-blue-700 bg-blue-200;
+    @apply text-orange-800 bg-orange-100;
   }
   ,
   .bg-primary {
-    @apply bg-primary-dark dark:bg-primary-light text-white;
+    @apply bg-orange-500;
+  }
+  ,
+  .link-primary {
+    @apply text-orange-500 hover:text-orange-600 dark:hover:text-orange-400;
+  }
+  ,
+  .btn-primary {
+    @apply text-white bg-orange-500 hover:bg-orange-600 dark:hover:bg-orange-400;
+  }
+  ,
+  .text-secondary {
+    @apply text-gray-500;
+  }
+  ,
+  .alert-secondary {
+    @apply text-gray-800 bg-gray-100;
   }
   ,
   .bg-secondary {
-    @apply bg-gray-600 dark:bg-gray-400 text-white;
+    @apply bg-gray-500;
   }
   ,
-  .bg-success {
-    @apply bg-green-600 dark:bg-green-400 text-white;
+  .link-secondary {
+    @apply text-gray-500 hover:text-gray-600 dark:hover:text-gray-400;
   }
   ,
-  .bg-danger {
-    @apply bg-red-600 dark:bg-red-400 text-white;
+  .btn-secondary {
+    @apply text-gray-700 bg-gray-200 dark:text-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600;
+  },
+  .text-info {
+    @apply text-blue-500;
   }
   ,
-  .bg-warning {
-    @apply bg-yellow-600 dark:bg-yellow-400 text-white;
+  .alert-info {
+    @apply text-blue-800 bg-blue-100;
   }
   ,
   .bg-info {
-    @apply bg-blue-600 dark:bg-blue-400 text-white;
+    @apply bg-blue-500;
   }
   ,
-  .btn-text-primary {
-    @apply text-primary-dark dark:text-primary-light hover:bg-gray-200 dark:hover:bg-gray-700;
+  .link-info {
+    @apply text-blue-500 hover:text-blue-600 dark:hover:text-blue-400;
   }
   ,
-  .btn-text-secondary {
-    @apply text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700;
+  .btn-info {
+    @apply text-white bg-blue-500 hover:bg-blue-600 dark:hover:bg-blue-400;
   }
   ,
-  .btn-text-success {
-    @apply text-green-600 dark:text-green-400 hover:bg-gray-200 dark:hover:bg-gray-700;
+  .text-success {
+    @apply text-green-500;
   }
   ,
-  .btn-text-danger {
-    @apply text-red-600 dark:text-red-400 hover:bg-gray-200 dark:hover:bg-gray-700;
+  .alert-success {
+    @apply text-green-800 bg-green-100;
   }
   ,
-  .btn-text-warning {
-    @apply text-yellow-600 dark:text-yellow-400 hover:bg-gray-200 dark:hover:bg-gray-700;
+  .bg-success {
+    @apply bg-green-500;
   }
   ,
-  .btn-text-info {
-    @apply text-blue-600 dark:text-blue-400 hover:bg-gray-200 dark:hover:bg-gray-700;
+  .link-success {
+    @apply text-green-500 hover:text-green-600 dark:hover:text-green-400;
   }
   ,
-  .btn-alert-primary {
-    @apply text-primary-darkest bg-primary-lightest;
+  .btn-success {
+    @apply text-white bg-green-500 hover:bg-green-600 dark:hover:bg-green-400;
   }
   ,
-  .btn-alert-secondary {
-    @apply text-gray-700 bg-gray-200;
+  .text-warning {
+    @apply text-yellow-500;
   }
   ,
-  .btn-alert-success {
-    @apply text-green-700 bg-green-200;
+  .alert-warning {
+    @apply text-yellow-800 bg-yellow-100;
   }
   ,
-  .btn-alert-danger {
-    @apply text-red-700 bg-red-200;
+  .bg-warning {
+    @apply bg-yellow-500;
   }
   ,
-  .btn-alert-warning {
-    @apply text-yellow-700 bg-yellow-200;
+  .link-warning {
+    @apply text-yellow-500 hover:text-yellow-600 dark:hover:text-yellow-400;
   }
   ,
-  .btn-alert-info {
-    @apply text-blue-700 bg-blue-200;
+  .btn-warning {
+    @apply text-white bg-yellow-500 hover:bg-yellow-600 dark:hover:bg-yellow-400;
   }
   ,
-  .btn-bg-primary {
-    @apply bg-primary-dark dark:bg-primary-light text-white;
+  .text-danger {
+    @apply text-red-500;
   }
   ,
-  .btn-bg-secondary {
-    @apply bg-gray-600 dark:bg-gray-400 text-white;
+  .alert-danger {
+    @apply text-red-800 bg-red-100;
   }
   ,
-  .btn-bg-success {
-    @apply bg-green-600 dark:bg-green-400 text-white;
+  .bg-danger {
+    @apply bg-red-500;
   }
   ,
-  .btn-bg-danger {
-    @apply bg-red-600 dark:bg-red-400 text-white;
+  .link-danger {
+    @apply text-red-500 hover:text-red-600 dark:hover:text-red-400;
   }
   ,
-  .btn-bg-warning {
-    @apply bg-yellow-600 dark:bg-yellow-400 text-white;
-  }
-  ,
-  .btn-bg-info {
-    @apply bg-blue-600 dark:bg-blue-400 text-white;
+  .btn-danger {
+    @apply text-white bg-red-500 hover:bg-red-600 dark:hover:bg-red-400;
   }
 }
 

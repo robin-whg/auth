@@ -13,12 +13,13 @@ module.exports = {
         current: 'currentColor',
         black: colors.black,
         white: colors.white,
-        gray: colors.trueGray,
+        gray: colors.gray,
         blue: colors.blue,
-        green: colors.green,
+        green: colors.emerald,
         indigo: colors.indigo,
-        red: colors.rose,
-        yellow: colors.amber,
+        red: colors.red,
+        yellow: colors.yellow,
+        orange: colors.orange
       },
     extend: {
       colors: {

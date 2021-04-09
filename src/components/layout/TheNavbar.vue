@@ -25,7 +25,7 @@
         <base-button
           size="sm"
           pill
-          class="sm:hidden btn-text-secondary"
+          class="sm:hidden link-secondary"
           @click="isVisible = !isVisible"
         >
           <i v-if="!isVisible" class="bi bi-list text-2xl" />

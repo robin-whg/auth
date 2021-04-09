@@ -3,7 +3,7 @@
     <template v-if="user">
       <base-dropdown position="right">
         <template #button>
-          <base-button pill size="sm" class="btn-text-secondary">
+          <base-button pill size="sm" class="link-secondary">
             <i class="bi bi-person-circle text-2xl" />
           </base-button>
         </template>
@@ -36,13 +36,8 @@
     <template v-else>
       <base-button
         @click="$router.push({ name: 'SignIn' })"
-        class="btn-text-primary mr-2"
+        class="btn-primary mr-2"
         >Sign In</base-button
-      >
-      <base-button
-        @click="$router.push({ name: 'SignUp' })"
-        class="btn-bg-primary"
-        >Sign Up</base-button
       >
     </template>
   </div>
