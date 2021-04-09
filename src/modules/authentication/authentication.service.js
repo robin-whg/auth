@@ -1,4 +1,3 @@
-import { app } from '@/firebase.js'
-import 'firebase/auth'
+import { auth as _auth } from '@/firebase.js'
 
-export const auth = app.auth()
+export const auth = _auth
