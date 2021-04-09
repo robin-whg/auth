@@ -8,7 +8,7 @@
       { 'py-2 px-3': size === 'md' },
       { 'py-3 px-4 text-xl': size === 'lg' },
     ]"
-    class="flex items-center justify-center"
+    class="font-semibold flex items-center justify-center"
   >
     <span :class="{ invisible: loading }">
       <slot />

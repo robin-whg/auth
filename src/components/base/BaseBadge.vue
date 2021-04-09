@@ -1,5 +1,5 @@
 <template>
-    <span class="mx-1 rounded-full text-sm px-2">
+    <span class="mx-1 font-semibold rounded-full text-sm px-2">
         <slot />
     </span>
 </template>
