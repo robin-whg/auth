@@ -7,6 +7,7 @@ This project is meant to be an easily extensible boilerplate project for compani
 ## Preamble
 - Intended to be used with other *Firebase* services than just authentication but this is not obligatory.
 - The first user with an admin **Custom Claim**(Role) has to be created with a dev server and firebase emulators as there is no way to do it with the firebase console website and you have to be an admin to create other admins using this project.
+- Modular file structure. Everything of a module is exported in ```index.js```. Modules communicate with each other only through there store. Core and Authentication Store is used pretty often in other modules as you need it for basically everything.
 - Styling
   - Typography
     - Default styles are done in ```@layer base``` of Tailwind
