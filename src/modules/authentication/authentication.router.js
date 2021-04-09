@@ -1,13 +1,5 @@
 export default [
   {
-    path: "/sign_up",
-    name: "SignUp",
-    component: () => import(/* webpackChunkName: "authentication" */"./views/SignUp.vue"),
-    meta: {
-      fullscreen: true,
-    },
-  },
-  {
     path: "/sign_in",
     name: "SignIn",
     component: () => import(/* webpackChunkName: "authentication" */"./views/SignIn.vue"),

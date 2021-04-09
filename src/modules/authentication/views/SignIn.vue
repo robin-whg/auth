@@ -34,15 +34,6 @@
       <p class="text-red-500">
         {{ error }}
       </p>
-      <p class="text-center">
-        No account?
-        <router-link
-          class="text-blue-500"
-          :to="{ name: 'SignUp' }"
-        >
-          Sign Up
-        </router-link>
-      </p>
     </form>
   </div>
 </template>
