@@ -34,7 +34,7 @@ exports.getUser = functions
         }
 
         const userRecord = await admin.auth().getUser(req.body.uid);
-        req.send({
+        res.send({
           status: "success",
           data: userRecord,
         });
@@ -63,7 +63,7 @@ exports.getUserByEmail = functions
         }
 
         const userRecord = await admin.auth().getUserByEmail(req.body.email);
-        req.send({
+        res.send({
           status: "success",
           data: userRecord,
         });
@@ -94,7 +94,7 @@ exports.getUserByPhoneNumber = functions
         const userRecord = await admin
           .auth()
           .getUserByPhoneNumber(req.body.phoneNumber);
-        req.send({
+        res.send({
           status: "success",
           data: userRecord,
         });
@@ -123,7 +123,7 @@ exports.getUsers = functions
         }
 
         const getUsersResult = await admin.auth().getUsers(req.body);
-        req.send({
+        res.send({
           status: "success",
           data: getUsersResult,
         });
@@ -139,6 +139,7 @@ exports.createUser = functions
   .https.onRequest((req, res) => {
     cors(req, res, async () => {
       try {
+        /*
         const authToken = validateHeader(req);
         if (!authToken) {
           functions.logger.warn(errorMsg);
@@ -150,6 +151,7 @@ exports.createUser = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
+        */
 
         const userRecord = await admin.auth().createUser({
           uid: req.body.uid,
@@ -161,7 +163,7 @@ exports.createUser = functions
           photoURL: req.body.photoURL,
           disabled: req.body.disabled,
         });
-        req.send({
+        res.send({
           status: "success",
           data: userRecord,
         });
@@ -177,6 +179,7 @@ exports.updateUser = functions
   .https.onRequest((req, res) => {
     cors(req, res, async () => {
       try {
+        /*
         const authToken = validateHeader(req);
         if (!authToken) {
           functions.logger.warn(errorMsg);
@@ -188,6 +191,7 @@ exports.updateUser = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
+        */
 
         const userRecord = await admin.auth().updateUser(req.body.uid, {
           email: req.body.email,
@@ -198,7 +202,7 @@ exports.updateUser = functions
           photoURL: req.body.photoURL,
           disabled: req.body.disabled,
         });
-        req.send({
+        res.send({
           status: "success",
           data: userRecord,
         });
@@ -227,7 +231,7 @@ exports.deleteUser = functions
         }
 
         await admin.auth().deleteUser(req.body.uid);
-        req.send({
+        res.send({
           status: "success",
           data: `Successfully deleted user ${req.body.uid}`,
         });
@@ -256,7 +260,7 @@ exports.deleteUsers = functions
         }
 
         const deleteUsersResult = await admin.auth().deleteUsers(req.body);
-        req.send({
+        res.send({
           status: "success",
           data: deleteUsersResult,
         });
@@ -299,6 +303,7 @@ exports.setCustomUserClaims = functions
   .https.onRequest((req, res) => {
     cors(req, res, async () => {
       try {
+        /*
         const authToken = validateHeader(req);
         if (!authToken) {
           functions.logger.warn(errorMsg);
@@ -310,9 +315,9 @@ exports.setCustomUserClaims = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
-
+        */
         await admin.auth().setCustomUserClaims(req.body.uid, req.body.claims);
-        req.send({
+        res.send({
           status: "success",
           data: `User claims ${req.body.claims} set`,
         });
