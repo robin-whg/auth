@@ -11,6 +11,9 @@
     <base-badge class="alert-danger"> Badge </base-badge>
     <base-badge class="alert-primary"> Badge </base-badge>
 
+    <base-alert v-if="displayAlert" @dismiss="displayAlert = false" variant="success" class="mb-2" dismissable>This is an alert.</base-alert>
+    <base-alert variant="warning" :autoDismiss=2000 >This is another alert.</base-alert>
+
     <base-modal v-if="modal" @close-event="close">
       <template v-slot:default>
         <h1>Are you sure?</h1>
@@ -48,6 +51,7 @@ x
 import { ref } from "vue";
 export default {
   setup() {
+    const displayAlert = ref(true)
     const modal = ref(false);
     const buttonVariants = ref([
       "link-secondary",
@@ -70,7 +74,7 @@ export default {
       console.log("confirm");
       modal.value = false;
     }
-    return { modal, close, confirm, buttonVariants };
+    return { modal, close, confirm, buttonVariants, displayAlert };
   },
 };
 </script>

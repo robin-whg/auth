@@ -1,37 +1,45 @@
 <template>
-  <base-card
+  <div
     :class="style.color"
-    class="flex justify-between w-full sm:max-w-2xl mb-4 items-center"
+    class="rounded-xl shadow-sm py-2 px-4 min-w-96 space-x-4 flex justify-between w-max items-center"
   >
-    <div class="flex items-center">
-      <i :class="style.icon" class="bi text-2xl mr-2" />
-      <span>
-        {{ alert.message }}
+    <div class="flex items-center space-x-4">
+      <i :class="style.icon" class="py-2 bi text-2xl" />
+      <span class="font-semibold">
+        <slot />
       </span>
     </div>
     <base-button
+      v-if="dismissable"
       pill
       size="sm"
-      @click="remove"
+      @click="dismiss"
       class="hover:bg-white hover:bg-opacity-20"
     >
       <i class="bi bi-x text-2xl" />
     </base-button>
-  </base-card>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    alert: {
-      type: Object,
-      required: true,
+    variant: {
+      type: String,
+      default: "info",
+    },
+    dismissable: {
+      type: Boolean,
+      default: false,
+    },
+    autoDismiss: {
+      type: Number,
     },
   },
   data() {
-      return {
-          timeout: null
-      }
+    return {
+      timeout: null,
+    };
   },
   computed: {
     style() {
@@ -39,7 +47,7 @@ export default {
         icon: "",
         color: "",
       };
-      switch (this.alert.type) {
+      switch (this.variant) {
         case "success":
           style.icon = "bi-check-circle";
           style.color = "alert-success";
@@ -60,12 +68,14 @@ export default {
     },
   },
   methods: {
-    remove() {
-      this.$store.dispatch('core/removeAlert', this.alert);
+    dismiss() {
+      this.$emit("dismiss");
     },
   },
   mounted() {
-    this.timeout = setTimeout(() => this.remove(), 5000);
+    if (this.autoDismiss) {
+      this.timeout = setTimeout(() => this.dismiss(), this.autoDismiss);
+    }
   },
   beforeUnmount() {
     clearTimeout(this.timeout);

@@ -3,21 +3,30 @@
     class="fixed w-full flex flex-col px-4 justify-center items-center bottom-0 z-50"
   >
     <template v-for="alert in alerts" :key="alert.id">
-        <the-alert-list-alert :alert="alert" />
+      <base-alert
+        class="mb-2"
+        dismissable
+        @dismiss="remove(alert)"
+        :autoDismiss="5000"
+        :type="alert.type"
+        >{{ alert.message }}</base-alert
+      >
     </template>
-
   </div>
 </template>
 
 <script>
-import TheAlertListAlert from './TheAlertListAlert.vue'
 export default {
-    components: {
-        TheAlertListAlert
+  computed: {
+    alerts() {
+      return this.$store.state.core.alerts;
     },
-    computed: {
-        alerts() { return this.$store.state.core.alerts }
+  },
+  methods: {
+    remove(alert) {
+      this.$store.dispatch("core/removeAlert", alert);
     },
+  },
 };
 </script>
 
