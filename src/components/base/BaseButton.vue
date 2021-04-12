@@ -10,7 +10,7 @@
     ]"
     class="font-semibold flex items-center justify-center"
   >
-    <span :class="{ invisible: loading }">
+    <span :class="{ invisible: loading }" class="whitespace-nowrap">
       <slot />
     </span>
     <base-spinner v-if="loading" class="absolute" />
