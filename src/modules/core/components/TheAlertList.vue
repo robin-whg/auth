@@ -4,7 +4,7 @@
   >
     <template v-for="alert in alerts" :key="alert.id">
       <base-alert
-        class="mb-2"
+        class="mb-2 max-w-4xl"
         dismissable
         @dismiss="remove(alert)"
         :autoDismiss="5000"

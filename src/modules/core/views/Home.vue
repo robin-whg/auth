@@ -17,7 +17,7 @@
     <base-modal v-if="modal" @close-event="close">
       <template v-slot:default>
         <h1>Are you sure?</h1>
-        <p>You can't undo this action.</p>
+        <base-alert variant="danger" class="my-4">This action cannot be undone.</base-alert>
       </template>
       <template v-slot:footer>
         <base-button @click="confirm" class="btn-danger"

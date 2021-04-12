@@ -31,7 +31,7 @@
                 @click="close"
                 pill
                 size="sm"
-                class="btn-text-secondary"
+                class="btn-secondary"
               >
                 <i class="bi bi-x text-2xl" />
              </base-button>

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="style.color"
-    class="rounded-xl shadow-sm py-2 px-4 min-w-96 space-x-4 flex justify-between w-max items-center"
+    class="rounded-xl w-full shadow-sm py-2 px-4 min-w-96 space-x-4 flex justify-between items-center"
   >
     <div class="flex items-center space-x-4">
       <i :class="style.icon" class="py-2 bi text-2xl" />
