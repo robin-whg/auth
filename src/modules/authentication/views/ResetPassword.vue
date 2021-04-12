@@ -10,6 +10,7 @@
         v-model.trim="email"
         label="E-Mail"
         type="email"
+        class="mb-4"
       ></base-form-input>
       <base-button
         :loading="loading"
