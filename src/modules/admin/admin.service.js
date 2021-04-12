@@ -1,34 +1,11 @@
 import { functions } from '@/firebase'
 
+export const getUserByEmail = functions.httpsCallable('admin-getUserByEmail')
+export const getUserByPhoneNumber = functions.httpsCallable('admin-getUserByPhoneNumber')
+export const getUsers = functions.httpsCallable('admin-getUsers')
+export const createUser = functions.httpsCallable('admin-createUser')
+export const updateUser = functions.httpsCallable('admin-updateUser')
+export const deleteUser = functions.httpsCallable('admin-deleteUser')
+export const deleteUsers = functions.httpsCallable('admin-deleteUsers')
 export const listUsers = functions.httpsCallable('admin-listUsers')
-
-/**
- * t1/admin-getUser).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-getUserByEmail).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-getUserByPhoneNumber).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-getUsers).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-createUser).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-updateUser).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-deleteUser).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-deleteUsers).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-listUsers).
-11:35:41I
-functions
-http function initialized (http://localhost:5001/auth-87f60/europe-west1/admin-setCustomUserClaims).
- */
+export const setCustomUserClaims = functions.httpsCallable('admin-setCustomUserClaims')
