@@ -1,10 +1,10 @@
 <template>
-  <div class="flex">
+  <div class="flex items-center">
     <template v-if="user">
       <base-dropdown position="right">
         <template #button>
-          <base-button pill size="sm" class="link-secondary">
-            <i class="bi bi-person-circle text-2xl" />
+          <base-button rounded size="sm" class="link-secondary">
+            <base-icon name="user-circle" size="h-8 w-8" />
           </base-button>
         </template>
 
@@ -21,12 +21,12 @@
           <hr class="border-gray-200 mb-2 dark:border-gray-700" />
           <the-navbar-avatar-dark-mode-toggle />
           <base-dropdown-item @click="$router.push({ name: 'Settings' })">
-            <i class="bi bi-gear text-secondary text-xl mr-2" />
+            <base-icon name="cog" class="text-secondary mr-2" />
             <span>Settings</span>
           </base-dropdown-item>
           <hr class="border-gray-200 my-2 dark:border-gray-700" />
           <base-dropdown-item @click="signOut()">
-            <i class="bi bi-box-arrow-right text-danger text-xl mr-2" />
+            <base-icon name="logout" class="text-danger mr-2" />
             <span>Sign Out</span>
           </base-dropdown-item>
         </template>

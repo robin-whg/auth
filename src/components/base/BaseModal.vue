@@ -29,11 +29,11 @@
             <div class="justify-self-end flex items-center justify-center">
               <base-button
                 @click="close"
-                pill
+                rounded
                 size="sm"
                 class="btn-secondary"
               >
-                <i class="bi bi-x text-2xl" />
+                <base-icon name="x" />
              </base-button>
             </div>
             <div class="mb-8">

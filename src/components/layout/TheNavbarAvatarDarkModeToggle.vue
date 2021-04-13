@@ -3,12 +3,14 @@
     @click="toggle()"
     class="text-left w-full px-4 py-1 flex justify-between items-center hover:bg-gray-200 dark:hover:bg-gray-700"
   >
-    <div>
-      <i class="bi bi-moon text-secondary text-xl mr-2" />
+    <div v-if="!darkMode" class="flex">
+      <base-icon name="moon" class="mr-2 text-secondary" />
       <span>Dark Mode</span>
     </div>
-    <i v-if="!darkMode" class="bi bi-toggle-off text-secondary text-xl" />
-    <i v-else class="bi bi-toggle-on text-primary text-xl" />
+    <div v-else class="flex">
+      <base-icon name="sun" class="mr-2 text-secondary" />
+      <span>Light Mode</span>
+    </div>
   </button>
 </template>
 

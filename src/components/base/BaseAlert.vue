@@ -4,7 +4,7 @@
     class="rounded-xl w-full shadow-sm py-2 px-4 min-w-96 space-x-4 flex justify-between items-center"
   >
     <div class="flex items-center space-x-4">
-      <i :class="style.icon" class="py-2 bi text-2xl" />
+      <base-icon :name="style.icon" class="m-2"/>
       <span class="font-semibold">
         <slot />
       </span>
@@ -16,7 +16,7 @@
       @click="dismiss"
       class="hover:bg-white hover:bg-opacity-20"
     >
-      <i class="bi bi-x text-2xl" />
+      <base-icon name="x" />
     </base-button>
   </div>
 </template>
@@ -49,19 +49,19 @@ export default {
       };
       switch (this.variant) {
         case "success":
-          style.icon = "bi-check-circle";
+          style.icon = "check-circle";
           style.color = "alert-success";
           break;
         case "danger":
-          style.icon = "bi-x-circle";
+          style.icon = "x-circle";
           style.color = "alert-danger";
           break;
         case "warning":
-          style.icon = "bi-exclamation-circle";
+          style.icon = "exclamation-circle";
           style.color = "alert-warning";
           break;
         default:
-          style.icon = "bi-info-circle";
+          style.icon = "information-circle";
           style.color = "alert-info";
       }
       return style;
