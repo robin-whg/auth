@@ -139,7 +139,6 @@ exports.createUser = functions
   .https.onRequest((req, res) => {
     cors(req, res, async () => {
       try {
-        /*
         const authToken = validateHeader(req);
         if (!authToken) {
           functions.logger.warn(errorMsg);
@@ -151,7 +150,6 @@ exports.createUser = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
-        */
 
         const userRecord = await admin.auth().createUser({
           uid: req.body.uid,
@@ -179,7 +177,6 @@ exports.updateUser = functions
   .https.onRequest((req, res) => {
     cors(req, res, async () => {
       try {
-        /*
         const authToken = validateHeader(req);
         if (!authToken) {
           functions.logger.warn(errorMsg);
@@ -191,7 +188,6 @@ exports.updateUser = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
-        */
 
         const userRecord = await admin.auth().updateUser(req.body.uid, {
           email: req.body.email,
@@ -286,7 +282,8 @@ exports.listUsers = functions
           res.status(403).send(errorMsg);
         }
 
-        const userRecords = await admin.auth().listUsers();
+        const data = req.body.data || {}
+        const userRecords = await admin.auth().listUsers( data.maxResults || 1000, data.nextPageToken || undefined );
         res.send({
           status: "success",
           data: userRecords,
@@ -303,7 +300,6 @@ exports.setCustomUserClaims = functions
   .https.onRequest((req, res) => {
     cors(req, res, async () => {
       try {
-        /*
         const authToken = validateHeader(req);
         if (!authToken) {
           functions.logger.warn(errorMsg);
@@ -315,7 +311,6 @@ exports.setCustomUserClaims = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
-        */
         await admin.auth().setCustomUserClaims(req.body.uid, req.body.claims);
         res.send({
           status: "success",
