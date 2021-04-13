@@ -8,15 +8,15 @@
           <span class="">{{ user.email.charAt(0).toUpperCase() }}</span>
         </div>
         <div class="ml-4">
-          <div class="text-sm font-medium text-gray-900">
+          <div class="text-sm font-medium">
             {{ user.displayName }}
           </div>
-          <div class="text-sm text-gray-500">{{ user.email }}</div>
+          <div class="text-sm text-secondary">{{ user.email }}</div>
         </div>
       </div>
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
-      <div class="text-sm text-gray-900">{{ user.uid }}</div>
+      <div class="text-sm">{{ user.uid }}</div>
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
       <base-badge v-if="!user.disabled" class="alert-success">
@@ -24,7 +24,7 @@
       </base-badge>
       <base-badge v-else class="alert-danger"> Disabled </base-badge>
     </td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary">
       <template v-if="user.customClaims">
         <base-badge
           v-for="claim in Object.keys(user.customClaims)"

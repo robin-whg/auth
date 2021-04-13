@@ -4,6 +4,8 @@
 
 <script>
 import {
+  ChevronRightIcon,
+  ChevronLeftIcon,
   ClipboardIcon,
   PencilAltIcon,
   TrashIcon,
@@ -21,6 +23,8 @@ import {
 } from "@heroicons/vue/outline";
 
 const icons = {
+  "chevron-right": ChevronRightIcon,
+  "chevron-left": ChevronLeftIcon,
   clipboard: ClipboardIcon,
   "pencil-alt": PencilAltIcon,
   trash: TrashIcon,
