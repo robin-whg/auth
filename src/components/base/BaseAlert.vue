@@ -24,7 +24,7 @@
 <script>
 export default {
   props: {
-    variant: {
+    type: {
       type: String,
       default: "info",
     },
@@ -47,7 +47,7 @@ export default {
         icon: "",
         color: "",
       };
-      switch (this.variant) {
+      switch (this.type) {
         case "success":
           style.icon = "check-circle";
           style.color = "alert-success";
