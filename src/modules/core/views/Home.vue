@@ -12,7 +12,9 @@
     <base-badge class="alert-primary"> Badge </base-badge>
 
     <base-alert v-if="displayAlert" @dismiss="displayAlert = false" variant="success" class="mb-2" dismissable>This is an alert.</base-alert>
-    <base-alert variant="warning" :autoDismiss=2000 >This is another alert.</base-alert>
+    <base-alert variant="warning" class="mb-2" >This is another alert.</base-alert>
+    <base-alert variant="info" class="mb-2" >This is another alert.</base-alert>
+    <base-alert variant="danger" class="mb-2" >This is another alert.</base-alert>
 
     <base-modal v-if="modal" @close-event="close">
       <template v-slot:default>
