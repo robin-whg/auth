@@ -56,26 +56,23 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-              <template v-if="!loading">
+              <template v-if="loading">
+                <user-list-item-loading v-for="i in maxResults" :key="i" />
+              </template>
+              <template v-else>
                 <user-list-item
                   v-for="user in users"
                   :key="user.uid"
                   :user="user"
                 />
               </template>
-              <template v-else>
-                <user-list-item-loading v-for="i in itemsPerPage" :key="i" />
-              </template>
             </tbody>
           </table>
+          <hr class="border-gray-200 dark:border-gray-700" />
           <div class="flex items-center justify-end space-x-4 py-4 px-4">
-            <p>Showing 1 - 10 of 23</p>
-            <base-button size="sm" rounded class="link-secondary">
-              <base-icon name="chevron-left" />
-            </base-button>
-            <base-button size="sm" rounded class="link-secondary">
-              <base-icon name="chevron-right" />
-            </base-button>
+            {{ pageTokens }}
+            <base-button @click="prevPage()">Prev Page</base-button>
+            <base-button @click="loadNextPage()">Next Page</base-button>
           </div>
         </div>
       </div>
@@ -97,14 +94,34 @@ export default {
       users: [],
       searchQuery: "",
       refreshLoading: false,
-      itemsPerPage: 10,
+      maxResults: 1,
       loading: false,
+      pageTokens: [],
     };
   },
+  computed: {
+      nextPage() {
+          return this.pageTokens[this.pageTokens.length - 1] 
+      }
+  },
   methods: {
-    async listUsers() {
+    async listUsers(pageToken = undefined) {
+      this.loading = true;
       try {
-        const { data } = await service.listUsers();
+        const { data } = await service.listUsers({
+          maxResults: this.maxResults,
+          nextPageToken: pageToken,
+        });
+
+        console.log(data);
+
+        if (data.pageToken) {
+          this.nextPageToken = data.pageToken;
+          this.pageTokens.push(data.pageToken);
+        } else {
+          this.nextPageToken = null;
+        }
+
         this.users = data.users;
       } catch (error) {
         this.$store.dispatch("core/addAlert", {
@@ -112,17 +129,18 @@ export default {
           message: error.message,
         });
       }
-    },
-    async refresh() {
-      this.loading = true;
-      await this.listUsers();
       this.loading = false;
     },
+    async loadNextPage() {
+
+    },
+    async prevPage() {
+
+    },
+    async refresh() {},
   },
-  async created() {
-    this.loading = true;
-    await this.listUsers();
-    this.loading = false;
+  created() {
+    this.listUsers();
   },
 };
 </script>
