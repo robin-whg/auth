@@ -29,7 +29,7 @@
         <base-badge
           v-for="claim in Object.keys(user.customClaims)"
           :key="claim"
-          class="alert-warning"
+          class="alert-info"
         >
           {{ claim }}
         </base-badge>
