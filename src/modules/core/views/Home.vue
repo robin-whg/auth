@@ -11,15 +11,15 @@
     <base-badge class="alert-danger"> Badge </base-badge>
     <base-badge class="alert-primary"> Badge </base-badge>
 
-    <base-alert v-if="displayAlert" @dismiss="displayAlert = false" variant="success" class="mb-2" dismissable>This is an alert.</base-alert>
-    <base-alert variant="warning" class="mb-2" >This is another alert.</base-alert>
-    <base-alert variant="info" class="mb-2" >This is another alert.</base-alert>
-    <base-alert variant="danger" class="mb-2" >This is another alert.</base-alert>
+    <base-alert v-if="displayAlert" @dismiss="displayAlert = false" type="success" class="mb-2" dismissable>This is an alert.</base-alert>
+    <base-alert type="warning" class="mb-2" >This is another alert.</base-alert>
+    <base-alert type="info" class="mb-2" >This is another alert.</base-alert>
+    <base-alert type="danger" class="mb-2" >This is another alert.</base-alert>
 
     <base-modal v-if="modal" @close-event="close">
       <template v-slot:default>
         <h1>Are you sure?</h1>
-        <base-alert variant="danger" class="my-4">This action cannot be undone.</base-alert>
+        <base-alert type="danger" class="my-4">This action cannot be undone.</base-alert>
       </template>
       <template v-slot:footer>
         <base-button @click="confirm" class="btn-danger"
