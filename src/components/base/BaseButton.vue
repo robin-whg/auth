@@ -11,7 +11,7 @@
       { 'p-2 rounded-full': size === 'md' && rounded },
       { 'p-3 rounded-full text-xl': size === 'lg' && rounded },
     ]"
-    class="font-semibold flex items-center justify-center"
+    class="font-semibold focus:outline-none items-center justify-center"
   >
     <span :class="{ invisible: loading }" class="whitespace-nowrap">
       <slot />
