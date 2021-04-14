@@ -3,7 +3,7 @@
     <td class="px-6 py-4 whitespace-nowrap">
       <div class="flex items-center">
         <div
-          class="text-secondary font-semibold rounded-full btn-secondary h-10 w-10 flex justify-center items-center"
+          class="text-secondary font-semibold rounded-full select-none btn-secondary h-10 w-10 flex justify-center items-center"
         >
           <span class="">{{ user.email.charAt(0).toUpperCase() }}</span>
         </div>
@@ -37,18 +37,63 @@
     </td>
     <td class="px-6">
       <div class="flex justify-end space-x-4">
-        <base-button rounded class="link-secondary" size="sm">
+        <base-button
+          @click="copyEmail()"
+          rounded
+          title="Copy Email"
+          class="link-secondary"
+          size="sm"
+        >
           <base-icon name="clipboard" />
         </base-button>
-        <base-button rounded class="link-secondary" size="sm">
+        <base-button
+          title="Edit"
+          @click="modalEdit = true"
+          rounded
+          class="link-secondary"
+          size="sm"
+        >
           <base-icon name="pencil-alt" />
         </base-button>
-        <base-button rounded class="link-danger" size="sm">
+        <base-button
+          title="Löschen"
+          @click="modalDelete = true"
+          rounded
+          class="link-danger"
+          size="sm"
+        >
           <base-icon name="trash" />
         </base-button>
       </div>
     </td>
   </tr>
+
+  <base-modal v-if="modalEdit" @close-event="modalEdit = false">
+    <template v-slot:default>
+      <h2>Edit User</h2>
+    </template>
+    <template v-slot:footer>
+      <base-button @click="modalEdit = false" class="mr-2 link-secondary"
+        >Cancel</base-button
+      >
+      <base-button @click="editUser()" class="btn-primary">Save</base-button>
+    </template>
+  </base-modal>
+
+  <base-modal v-if="modalDelete" @close-event="modalDelete = false">
+    <template v-slot:default>
+      <h2>Delete User</h2>
+      <base-alert class="mt-4" type="warning"
+        >Are your sure? This action cannot be undone.</base-alert
+      >
+    </template>
+    <template v-slot:footer>
+      <base-button @click="modalDelete = false" class="mr-2 link-secondary"
+        >Cancel</base-button
+      >
+      <base-button @click="deleteUser()" class="btn-danger">Delete</base-button>
+    </template>
+  </base-modal>
 </template>
 
 <script>
@@ -57,6 +102,23 @@ export default {
     user: {
       type: Object,
       required: true,
+    },
+  },
+  data() {
+    return {
+      modalEdit: false,
+      modalDelete: false,
+    };
+  },
+  methods: {
+    async copyEmail() {
+      await navigator.clipboard.writeText(this.user.email);
+    },
+    editUser() {
+      console.log("edit");
+    },
+    deleteUser() {
+      console.log("delete");
     },
   },
 };
