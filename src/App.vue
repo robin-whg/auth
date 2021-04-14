@@ -10,26 +10,20 @@
 
 <script>
 import TheNavbar from "@/components/layout/TheNavbar.vue";
-import TheAlertList from '@/modules/core/components/TheAlertList.vue';
+import TheAlertList from "@/modules/core/components/TheAlertList.vue";
 export default {
   components: {
     TheNavbar,
-    TheAlertList
+    TheAlertList,
   },
   setup() {
-    function setDarkModeClass() {
-      if (
-        document.cookie
-          .split(";")
-          .some((item) => item.includes("darkMode=true"))
-      ) {
-        document.querySelector("body").classList.add("dark");
-      }
+    function setDarkMode() {
+      if (localStorage.getItem("darkMode")) document.querySelector("body").classList.add("dark");
     }
-    return { setDarkModeClass };
+    return { setDarkMode };
   },
   created() {
-    this.setDarkModeClass();
+    this.setDarkMode();
   },
 };
 </script>

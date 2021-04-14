@@ -3,45 +3,30 @@
     @click="toggle()"
     class="text-left w-full px-4 py-1 flex justify-between items-center hover:bg-gray-200 dark:hover:bg-gray-700"
   >
-    <div v-if="!darkMode" class="flex">
-      <base-icon name="moon" class="mr-2 text-secondary" />
-      <span>Dark Mode</span>
-    </div>
-    <div v-else class="flex">
-      <base-icon name="sun" class="mr-2 text-secondary" />
-      <span>Light Mode</span>
-    </div>
+    Dark Mode
   </button>
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 export default {
   setup() {
-    const cookie = ref("");
-    const darkMode = computed(() => {
-      const value =
-        cookie?.value
-          .split(";")
-          .some((item) => item.includes("darkMode=true")) || false;
-      return value;
-    });
+    const darkMode = ref(false)
     function toggle() {
-      if (darkMode.value) {
-        document.cookie =
-          "darkMode=false; expires= Thu, 21 Aug 2050 20:00:00 UTC; path=/;SameSite=Lax";
+      if(darkMode.value) {
+        localStorage.removeItem('darkMode')
         document.querySelector("body").classList.remove("dark");
+        darkMode.value = false
       } else {
-        document.cookie =
-          "darkMode=true; expires= Thu, 21 Aug 2050 20:00:00 UTC; path=/;SameSite=Lax";
+        localStorage.setItem('darkMode', 'true')
         document.querySelector("body").classList.add("dark");
+        darkMode.value = true
       }
-      cookie.value = document.cookie;
     }
-    return { toggle, cookie, darkMode };
+    return { toggle, darkMode };
   },
   mounted() {
-    this.cookie = document.cookie;
+    this.darkMode = localStorage.getItem('darkMode') || false
   },
 };
 </script>
