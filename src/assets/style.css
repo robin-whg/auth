@@ -39,7 +39,7 @@
   }
   ,
   .link-secondary {
-    @apply text-secondary-dark hover:text-secondary-dark dark:hover:text-secondary-light;
+    @apply text-secondary hover:text-secondary-dark dark:hover:text-secondary-light;
   }
   ,
   .btn-secondary {
