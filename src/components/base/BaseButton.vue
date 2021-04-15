@@ -5,7 +5,7 @@
       { 'cursor-default': loading },
       pill ? 'rounded-full' : 'rounded-lg',
       { 'py-1 px-2 text-sm': size === 'sm' && !rounded },
-      { 'py-2 px-3': size === 'md'  && !rounded},
+      { 'py-2 px-3': size === 'md' && !rounded },
       { 'py-3 px-4 text-xl': size === 'lg' && !rounded },
       { 'p-1 rounded-full text-sm': size === 'sm' && rounded },
       { 'p-2 rounded-full': size === 'md' && rounded },
@@ -13,10 +13,12 @@
     ]"
     class="font-semibold focus:outline-none items-center justify-center"
   >
-    <span :class="{ invisible: loading }" class="whitespace-nowrap">
-      <slot />
-    </span>
-    <base-spinner v-if="loading" class="absolute" />
+    <div class="flex justify-center">
+      <span :class="{ invisible: loading }" class="whitespace-nowrap">
+        <slot />
+      </span>
+      <base-spinner v-if="loading" class="absolute" />
+    </div>
   </button>
 </template>
 
@@ -37,8 +39,8 @@ export default {
     },
     rounded: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 };
 </script>
