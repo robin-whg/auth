@@ -68,12 +68,6 @@
               </template>
             </tbody>
           </table>
-          <hr class="border-gray-200 dark:border-gray-700" />
-          <div class="flex items-center justify-end space-x-4 py-4 px-4">
-            {{ pageTokens }}
-            <base-button @click="prevPage()">Prev Page</base-button>
-            <base-button @click="loadNextPage()">Next Page</base-button>
-          </div>
         </div>
       </div>
     </div>
@@ -94,34 +88,17 @@ export default {
       users: [],
       searchQuery: "",
       refreshLoading: false,
-      maxResults: 1,
+      maxResults: 25,
       loading: false,
-      pageTokens: [],
     };
   },
-  computed: {
-      nextPage() {
-          return this.pageTokens[this.pageTokens.length - 1] 
-      }
-  },
   methods: {
-    async listUsers(pageToken = undefined) {
+    async listUsers() {
       this.loading = true;
       try {
         const { data } = await service.listUsers({
-          maxResults: this.maxResults,
-          nextPageToken: pageToken,
+          maxResults: 1000,
         });
-
-        console.log(data);
-
-        if (data.pageToken) {
-          this.nextPageToken = data.pageToken;
-          this.pageTokens.push(data.pageToken);
-        } else {
-          this.nextPageToken = null;
-        }
-
         this.users = data.users;
       } catch (error) {
         this.$store.dispatch("core/addAlert", {
@@ -131,13 +108,9 @@ export default {
       }
       this.loading = false;
     },
-    async loadNextPage() {
-
+    async refresh() {
+      await this.loading()
     },
-    async prevPage() {
-
-    },
-    async refresh() {},
   },
   created() {
     this.listUsers();
