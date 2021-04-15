@@ -53,12 +53,8 @@ export default {
           style.color = "alert-success";
           break;
         case "danger":
-          style.icon = "x-circle";
-          style.color = "alert-danger";
-          break;
-        case "warning":
           style.icon = "exclamation-circle";
-          style.color = "alert-warning";
+          style.color = "alert-danger";
           break;
         default:
           style.icon = "information-circle";
