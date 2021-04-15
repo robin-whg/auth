@@ -189,14 +189,16 @@ exports.updateUser = functions
           res.status(403).send(errorMsg);
         }
 
-        const userRecord = await admin.auth().updateUser(req.body.uid, {
-          email: req.body.email,
-          emailVerified: req.body.emailVerified,
-          phoneNumber: req.body.phoneNumber,
-          password: req.body.password,
-          displayName: req.body.displayName,
-          photoURL: req.body.photoURL,
-          disabled: req.body.disabled,
+        const data = req.body.data
+
+        const userRecord = await admin.auth().updateUser(data.uid, {
+          email: data.email,
+          emailVerified: data.emailVerified,
+          phoneNumber: data.phoneNumber,
+          password: data.password,
+          displayName: data.displayName,
+          photoURL: data.photoURL,
+          disabled: data.disabled,
         });
         res.send({
           status: "success",
