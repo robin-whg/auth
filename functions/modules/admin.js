@@ -228,7 +228,7 @@ exports.deleteUser = functions
           res.status(403).send(errorMsg);
         }
 
-        await admin.auth().deleteUser(req.body.uid);
+        await admin.auth().deleteUser(req.body.data.uid);
         res.send({
           status: "success",
           data: `Successfully deleted user ${req.body.uid}`,
