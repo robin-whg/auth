@@ -75,26 +75,14 @@
     </template>
   </base-modal>
 
-  <base-modal v-if="modalDelete" @close-event="modalDelete = false">
-    <template v-slot:default>
-      <h2 class="mb-4">Delete User</h2>
-      <base-alert type="warning"
-        >Are your sure? This action cannot be undone.</base-alert
-      >
-    </template>
-    <template v-slot:footer>
-      <base-button @click="modalDelete = false" class="mr-2 link-secondary"
-        >Cancel</base-button
-      >
-      <base-button @click="deleteUser()" class="btn-danger">Delete</base-button>
-    </template>
-  </base-modal>
+  <user-list-item-delete :user="user" v-if="modalDelete" @close-event="modalDelete = false" />
 </template>
 
 <script>
+import UserListItemDelete from './UserListItemDelete.vue';
 import UserListItemEditForm from './UserListItemEditForm.vue';
 export default {
-  components: { UserListItemEditForm },
+  components: { UserListItemEditForm, UserListItemDelete },
   props: {
     user: {
       type: Object,
