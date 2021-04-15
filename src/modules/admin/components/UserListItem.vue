@@ -70,20 +70,15 @@
 
   <base-modal v-if="modalEdit" @close-event="modalEdit = false">
     <template v-slot:default>
-      <h2>Edit User</h2>
-    </template>
-    <template v-slot:footer>
-      <base-button @click="modalEdit = false" class="mr-2 link-secondary"
-        >Cancel</base-button
-      >
-      <base-button @click="editUser()" class="btn-primary">Save</base-button>
+      <h2 class="mb-4">Edit User</h2>
+      <user-list-item-edit-form @close-event="modalEdit = false" :user="user" />
     </template>
   </base-modal>
 
   <base-modal v-if="modalDelete" @close-event="modalDelete = false">
     <template v-slot:default>
-      <h2>Delete User</h2>
-      <base-alert class="mt-4" type="warning"
+      <h2 class="mb-4">Delete User</h2>
+      <base-alert type="warning"
         >Are your sure? This action cannot be undone.</base-alert
       >
     </template>
@@ -97,7 +92,9 @@
 </template>
 
 <script>
+import UserListItemEditForm from './UserListItemEditForm.vue';
 export default {
+  components: { UserListItemEditForm },
   props: {
     user: {
       type: Object,
@@ -113,9 +110,6 @@ export default {
   methods: {
     async copyEmail() {
       await navigator.clipboard.writeText(this.user.email);
-    },
-    editUser() {
-      console.log("edit");
     },
     deleteUser() {
       console.log("delete");
