@@ -36,7 +36,7 @@
                 <base-icon name="x" />
              </base-button>
             </div>
-            <div class="mb-8">
+            <div>
               <slot />
             </div>
             <div class="justify-self-end flex items-center justify-center">
