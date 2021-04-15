@@ -5,6 +5,7 @@
         <div
           class="shadow-sm overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl"
         >
+          <!--
           <div class="flex items-center space-x-4 py-2 px-4">
             <base-form-input
               class="w-full"
@@ -21,6 +22,7 @@
               <base-icon @click="refresh()" name="refresh" />
             </base-button>
           </div>
+          -->
           <table
             class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
           >
@@ -109,7 +111,7 @@ export default {
       this.loading = false;
     },
     async refresh() {
-      await this.loading()
+      await this.loading();
     },
   },
   created() {
