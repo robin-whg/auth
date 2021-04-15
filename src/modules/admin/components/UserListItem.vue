@@ -3,7 +3,7 @@
     <td class="px-6 py-4 whitespace-nowrap">
       <div class="flex items-center">
         <div
-          class="text-secondary font-semibold rounded-full select-none btn-secondary h-10 w-10 flex justify-center items-center"
+          class="font-semibold rounded-full select-none btn-secondary h-10 w-10 flex justify-center items-center"
         >
           <span class="">{{ user.email.charAt(0).toUpperCase() }}</span>
         </div>

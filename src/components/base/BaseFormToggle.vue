@@ -12,7 +12,7 @@
         <svg
           v-if="modelValue"
           xmlns="http://www.w3.org/2000/svg"
-          class="h-10 w-10 text-primary-500"
+          class="h-10 w-10 text-primary"
           fill="currentColor"
           viewBox="0 0 16 16"
         >
