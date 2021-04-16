@@ -72,14 +72,24 @@
           </table>
         </div>
       </div>
+      <div class="flex justify-center">
+        <base-button
+          :disabled="!pageToken"
+          :class="{ invisible: !pageToken }"
+          :loading="loadingMore"
+          @click="loadMore"
+          class="btn-secondary my-4"
+          >Load More</base-button
+        >
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import * as service from "../admin.service.js";
 import UserListItem from "./UserListItem.vue";
 import UserListItemLoading from "./UserListItemLoading.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   components: {
     UserListItem,
@@ -87,35 +97,35 @@ export default {
   },
   data() {
     return {
-      users: [],
       searchQuery: "",
       refreshLoading: false,
-      maxResults: 25,
       loading: false,
+      loadingMore: false,
     };
   },
+  computed: {
+    ...mapState("admin", ["users", "pageToken", "maxResults"]),
+  },
   methods: {
-    async listUsers() {
+    ...mapActions({
+      listUsers: "admin/listUsers",
+    }),
+    async loadUsers() {
       this.loading = true;
-      try {
-        const { data } = await service.listUsers({
-          maxResults: 1000,
-        });
-        this.users = data.users;
-      } catch (error) {
-        this.$store.dispatch("core/addAlert", {
-          type: "danger",
-          message: error.message,
-        });
-      }
+      await this.listUsers()
       this.loading = false;
     },
+    async loadMore() {
+      this.loadingMore = true;
+      await this.listUsers()
+      this.loadingMore = false;
+    },
     async refresh() {
-      await this.loading();
+      console.log("refresh");
     },
   },
   created() {
-    this.listUsers();
+    this.loadUsers();
   },
 };
 </script>
