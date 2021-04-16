@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import * as service from "../admin.service.js";
 export default {
   props: {
     user: {
@@ -59,25 +58,20 @@ export default {
   methods: {
     async sumbit() {
       this.loading = true;
-      try {
-        const res = await service.updateUser(this.editedUser)
-        console.log(res)
-        this.$emit('close-event')
-      } catch (error) {
-        this.$store.dispatch("core/addAlert", {
-          type: "danger",
-          message: error.message,
-        });
-      }
+      const res = await this.$store.dispatch(
+        "admin/updateUser",
+        this.editedUser
+      );
       this.loading = false;
+      if (res) this.$emit("close-event");
     },
   },
   mounted() {
-    this.editedUser = {...this.user};
+    this.editedUser = { ...this.user };
   },
   unmounted() {
-    this.editedUser = {}
-  }
+    this.editedUser = {};
+  },
 };
 </script>
 
