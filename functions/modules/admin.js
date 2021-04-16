@@ -189,7 +189,7 @@ exports.updateUser = functions
           res.status(403).send(errorMsg);
         }
 
-        const data = req.body.data
+        const data = req.body.data;
 
         const userRecord = await admin.auth().updateUser(data.uid, {
           email: data.email,
@@ -231,7 +231,7 @@ exports.deleteUser = functions
         await admin.auth().deleteUser(req.body.data.uid);
         res.send({
           status: "success",
-          data: `Successfully deleted user ${req.body.uid}`,
+          data: `Successfully deleted user ${req.body.data.uid}`,
         });
       } catch (error) {
         functions.logger.error(error);
@@ -284,8 +284,10 @@ exports.listUsers = functions
           res.status(403).send(errorMsg);
         }
 
-        const data = req.body.data || {}
-        const userRecords = await admin.auth().listUsers( data.maxResults || 1000, data.pageToken || undefined );
+        const data = req.body.data || {};
+        const userRecords = await admin
+          .auth()
+          .listUsers(data.maxResults || 1000, data.pageToken || undefined);
         res.send({
           status: "success",
           data: userRecords,

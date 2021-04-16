@@ -112,12 +112,12 @@ export default {
     }),
     async loadUsers() {
       this.loading = true;
-      await this.listUsers()
+      await this.listUsers();
       this.loading = false;
     },
     async loadMore() {
       this.loadingMore = true;
-      await this.listUsers()
+      await this.listUsers();
       this.loadingMore = false;
     },
     async refresh() {

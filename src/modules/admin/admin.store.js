@@ -9,18 +9,23 @@ export const state = {
 };
 
 export const mutations = {
+  CLEAR_USERS(state) {
+    state.users = [];
+  },
   ADD_USERS(state, users) {
     state.users.push(...users);
   },
-  REMOVE_ALERT(state, user) {
+  DELETE_USER(state, user) {
     state.users = state.users.filter((x) => x.uid !== user.uid);
+  },
+  UPDATE_USER(state, updatedUser) {
+    const index = state.users.indexOf(
+      state.users.find((x) => x.uid === updatedUser.uid)
+    );
+    state.users[index] = updatedUser;
   },
   SET_PAGE_TOKEN(state, pageToken) {
     state.pageToken = pageToken;
-  },
-  UPDATE_USER(state, updatedUser) {
-    const index = state.users.indexOf(state.users.find((x) => x.uid === updatedUser.uid));
-    state.users[index] = updatedUser
   },
 };
 
@@ -48,7 +53,31 @@ export const actions = {
       commit("UPDATE_USER", data);
       return true;
     } catch (error) {
-        console.log(error)
+      console.log(error);
+      dispatch(
+        "core/addAlert",
+        { type: "danger", message: error.message },
+        { root: true }
+      );
+    }
+  },
+  async deleteUser({ commit, dispatch }, user) {
+    try {
+      await service.deleteUser({ uid: user.uid });
+      if (state.pageToken && state.pageToken === user.uid) {
+        // Change page token if user is the last in array otherwise the token is invalid.
+        const newPageToken =
+          state.users[state.users.length - 2].uid || undefined;
+        commit("SET_PAGE_TOKEN", newPageToken);
+      }
+      commit("DELETE_USER", user);
+      //if there is only one user in the list reload otherwise you can't load more users
+      if (state.users.length === 1) {
+        await dispatch("listUsers");
+      }
+      return true;
+    } catch (error) {
+      console.log(error);
       dispatch(
         "core/addAlert",
         { type: "danger", message: error.message },

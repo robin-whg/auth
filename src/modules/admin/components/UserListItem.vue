@@ -69,24 +69,25 @@
   </tr>
 
   <base-modal v-if="modalEdit" @close-event="modalEdit = false">
-    <template v-slot:default>
+    <template #default>
       <h2 class="mb-4">Edit User</h2>
-      <user-list-item-edit-form @close-event="modalEdit = false" :user="user" />
+      <user-list-item-edit @close-event="modalEdit = false" :user="user" />
     </template>
   </base-modal>
 
-  <user-list-item-delete
-    :user="user"
-    v-if="modalDelete"
-    @close-event="modalDelete = false"
-  />
+  <base-modal v-if="modalDelete" @close-event="modalDelete = false">
+    <template #default>
+      <h2 class="mb-4">Delete User</h2>
+      <user-list-item-delete :user="user" @close-event="modalDelete = false" />
+    </template>
+  </base-modal>
 </template>
 
 <script>
 import UserListItemDelete from "./UserListItemDelete.vue";
-import UserListItemEditForm from "./UserListItemEditForm.vue";
+import UserListItemEdit from "./UserListItemEdit.vue";
 export default {
-  components: { UserListItemEditForm, UserListItemDelete },
+  components: { UserListItemEdit, UserListItemDelete },
   props: {
     user: {
       type: Object,
