@@ -14,7 +14,7 @@
     class="font-semibold focus:outline-none items-center justify-center"
   >
     <div class="flex justify-center">
-      <span :class="{ invisible: loading }" class="whitespace-nowrap">
+      <span :class="{ invisible: loading }" class="whitespace-nowrap flex items-center">
         <slot />
       </span>
       <base-spinner v-if="loading" class="absolute" />
