@@ -285,7 +285,7 @@ exports.listUsers = functions
         }
 
         const data = req.body.data || {}
-        const userRecords = await admin.auth().listUsers( data.maxResults || 1000, data.nextPageToken || undefined );
+        const userRecords = await admin.auth().listUsers( data.maxResults || 1000, data.pageToken || undefined );
         res.send({
           status: "success",
           data: userRecords,
