@@ -75,12 +75,16 @@
     </template>
   </base-modal>
 
-  <user-list-item-delete :user="user" v-if="modalDelete" @close-event="modalDelete = false" />
+  <user-list-item-delete
+    :user="user"
+    v-if="modalDelete"
+    @close-event="modalDelete = false"
+  />
 </template>
 
 <script>
-import UserListItemDelete from './UserListItemDelete.vue';
-import UserListItemEditForm from './UserListItemEditForm.vue';
+import UserListItemDelete from "./UserListItemDelete.vue";
+import UserListItemEditForm from "./UserListItemEditForm.vue";
 export default {
   components: { UserListItemEditForm, UserListItemDelete },
   props: {
@@ -97,10 +101,18 @@ export default {
   },
   methods: {
     async copyEmail() {
-      await navigator.clipboard.writeText(this.user.email);
-    },
-    deleteUser() {
-      console.log("delete");
+      try {
+        await navigator.clipboard.writeText(this.user.email);
+        this.$store.dispatch("core/addAlert", {
+          type: "success",
+          message: "Email copied to clipboard.",
+        });
+      } catch (error) {
+        this.$store.dispatch("core/addAlert", {
+          type: "danger",
+          message: error.message,
+        });
+      }
     },
   },
 };

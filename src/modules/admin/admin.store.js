@@ -20,9 +20,6 @@ export const mutations = {
   },
   UPDATE_USER(state, updatedUser) {
     const index = state.users.indexOf(state.users.find((x) => x.uid === updatedUser.uid));
-    console.log(index);
-    console.log(updatedUser);
-    console.log(state.users[index])
     state.users[index] = updatedUser
   },
 };
