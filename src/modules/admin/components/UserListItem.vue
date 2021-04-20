@@ -13,6 +13,9 @@
           </div>
           <div class="text-sm text-secondary">{{ user.email }}</div>
         </div>
+        <div class="px-2">
+          <base-icon v-if="user.emailVerified" class="text-primary" name="badge-check" />
+        </div>
       </div>
     </td>
     <td class="px-6 py-4 whitespace-nowrap">
@@ -46,41 +49,11 @@
         >
           <base-icon name="clipboard" />
         </base-button>
-        <base-button
-          title="Edit"
-          @click="modalEdit = true"
-          rounded
-          class="link-secondary"
-          size="sm"
-        >
-          <base-icon name="pencil-alt" />
-        </base-button>
-        <base-button
-          title="Löschen"
-          @click="modalDelete = true"
-          rounded
-          class="link-danger"
-          size="sm"
-        >
-          <base-icon name="trash" />
-        </base-button>
+        <user-list-item-edit :user="user" />
+        <user-list-item-delete :user="user" />
       </div>
     </td>
   </tr>
-
-  <base-modal v-if="modalEdit" @close-event="modalEdit = false">
-    <template #default>
-      <h2 class="mb-4">Edit User</h2>
-      <user-list-item-edit @close-event="modalEdit = false" :user="user" />
-    </template>
-  </base-modal>
-
-  <base-modal v-if="modalDelete" @close-event="modalDelete = false">
-    <template #default>
-      <h2 class="mb-4">Delete User</h2>
-      <user-list-item-delete :user="user" @close-event="modalDelete = false" />
-    </template>
-  </base-modal>
 </template>
 
 <script>

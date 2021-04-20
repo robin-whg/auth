@@ -1,6 +1,6 @@
 <template>
   <base-button @click="visible = true" class="btn-primary" v-bind="$attrs">
-    Add User
+    Create User
   </base-button>
   <base-modal v-if="visible" @close-event="visible = false">
     <h2 class="mb-4">Add User</h2>

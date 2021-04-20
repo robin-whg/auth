@@ -1,5 +1,15 @@
 <template>
-  <div>
+  <base-button
+    title="Edit"
+    @click="visible = true"
+    rounded
+    class="link-danger"
+    size="sm"
+  >
+    <base-icon name="trash" />
+  </base-button>
+  <base-modal v-if="visible" @close-event="visible = false">
+    <h2 class="mb-4">Delete User</h2>
     <base-alert type="danger" class="mb-4"
       >Are your sure? This action cannot be undone.</base-alert
     >
@@ -11,7 +21,7 @@
         >Delete User</base-button
       >
     </div>
-  </div>
+  </base-modal>
 </template>
 
 <script>
@@ -24,6 +34,7 @@ export default {
   },
   data() {
     return {
+      visible: false,
       loading: false,
     };
   },
@@ -32,7 +43,7 @@ export default {
       this.loading = true;
       const res = await this.$store.dispatch("admin/deleteUser", this.user);
       this.loading = false;
-      if (res) this.$emit("close-event");
+      if (res) this.visible = false;
     },
   },
 };
