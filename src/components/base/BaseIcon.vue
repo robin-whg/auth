@@ -20,10 +20,12 @@ import {
   UserCircleIcon,
   SunIcon,
   RefreshIcon,
-  UserAddIcon
+  UserAddIcon,
+  BadgeCheckIcon
 } from "@heroicons/vue/outline";
 
 const icons = {
+  "badge-check": BadgeCheckIcon,
   "user-add": UserAddIcon,
   "chevron-right": ChevronRightIcon,
   "chevron-left": ChevronLeftIcon,
