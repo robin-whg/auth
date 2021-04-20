@@ -2,6 +2,7 @@
   <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <user-list-create class="mb-2" />
         <div
           class="shadow-sm overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl"
         >
@@ -87,11 +88,13 @@
 </template>
 
 <script>
+import UserListCreate from './UserListCreate.vue'
 import UserListItem from "./UserListItem.vue";
 import UserListItemLoading from "./UserListItemLoading.vue";
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
+    UserListCreate,
     UserListItem,
     UserListItemLoading,
   },

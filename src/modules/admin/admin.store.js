@@ -15,6 +15,9 @@ export const mutations = {
   ADD_USERS(state, users) {
     state.users.push(...users);
   },
+  ADD_USER(state, user) {
+    state.users.push(user);
+  },
   DELETE_USER(state, user) {
     state.users = state.users.filter((x) => x.uid !== user.uid);
   },
@@ -61,6 +64,20 @@ export const actions = {
       );
     }
   },
+  async createUser({ commit, dispatch }, user) {
+    try {
+      const { data } = await service.createUser(removeEmpty(user));
+      commit("ADD_USER", data);
+      return true;
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        "core/addAlert",
+        { type: "danger", message: error.message },
+        { root: true }
+      );
+    }
+  },
   async deleteUser({ commit, dispatch }, user) {
     try {
       await service.deleteUser({ uid: user.uid });
@@ -86,3 +103,10 @@ export const actions = {
     }
   },
 };
+
+function removeEmpty(obj) {
+  return Object.entries(obj).reduce(
+    (a, [k, v]) => (v == null ? a : ((a[k] = v), a)),
+    {}
+  );
+}

@@ -151,15 +151,17 @@ exports.createUser = functions
           res.status(403).send(errorMsg);
         }
 
+        const data = req.body.data
+
         const userRecord = await admin.auth().createUser({
-          uid: req.body.uid,
-          email: req.body.email,
-          emailVerified: req.body.emailVerified,
-          phoneNumber: req.body.phoneNumber,
-          password: req.body.password,
-          displayName: req.body.displayName,
-          photoURL: req.body.photoURL,
-          disabled: req.body.disabled,
+          uid: data.uid,
+          email: data.email,
+          emailVerified: data.emailVerified,
+          phoneNumber: data.phoneNumber,
+          password: data.password,
+          displayName: data.displayName,
+          photoURL: data.photoURL,
+          disabled: data.disabled,
         });
         res.send({
           status: "success",
