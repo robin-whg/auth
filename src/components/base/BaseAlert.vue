@@ -4,7 +4,7 @@
     class="rounded-xl w-full shadow-sm py-2 px-4 min-w-96 space-x-4 flex justify-between items-center"
   >
     <div class="flex items-center space-x-4">
-      <base-icon :name="style.icon" class="my-2"/>
+      <base-icon :name="style.icon" class="h-8 w-8 my-2"/>
       <span class="font-semibold">
         <slot />
       </span>
