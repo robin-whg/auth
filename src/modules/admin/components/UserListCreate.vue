@@ -3,7 +3,7 @@
     Create User
   </base-button>
   <base-modal v-if="visible" @close-event="visible = false">
-    <h2 class="mb-4">Add User</h2>
+    <h2 class="mb-4">Create User</h2>
     <base-alert type="info">
       <ul class="list-inside">
         <li>Leave out any fields that you don't want to set.</li>
@@ -33,6 +33,7 @@
         label="Phone Number"
         type="number"
       />
+      <base-form-tags label="Roles" v-model="customClaims" class="mb-2" />
       <base-form-toggle
         class="mt-2"
         label="Verified E-Mail"
@@ -44,7 +45,10 @@
         v-model="newUser.disabled"
       />
       <div class="flex justify-end mt-4">
-        <base-button :loading="loading" type="submit" class="btn-primary w-full"
+        <base-button
+          :loading="loading"
+          type="submit"
+          class="btn-primary w-full"
           >Add User</base-button
         >
       </div>
@@ -68,6 +72,7 @@ export default {
         displayName: undefined,
         disabled: false,
       },
+      customClaims: [],
     };
   },
   methods: {
@@ -84,12 +89,15 @@ export default {
       }
 
       if (!this.errorEmail) {
-        console.log(this.newUser);
-        const res = await this.$store.dispatch(
+        const user = await this.$store.dispatch(
           "admin/createUser",
           this.newUser
         );
-        if (res) this.visible = false;
+        console.log(user)
+        //const claimsObject = this.customClaims.map(x => ({ x: true }))
+        //console.log(claimsObject)
+        //const res = await this.$store.dispatch("admin/setCustomUserClaims", { uid: user.uid, claims: claimsObject});
+        if (user) this.visible = false;
       }
       this.loading = false;
     },
