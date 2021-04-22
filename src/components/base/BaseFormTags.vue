@@ -3,7 +3,7 @@
     <label class="font-semibold" :class="{ 'sr-only': srOnly }" v-if="label">{{
       label
     }}</label>
-    <div class="rounded-xl border-0 px-2 bg-gray-200 dark:bg-gray-700">
+    <div class="rounded-lg focus:ring-primary focus:ring-2 border-0 bg-gray-200 dark:bg-gray-700">
       <base-badge
         v-for="(v, i) in modelValue"
         :key="i"

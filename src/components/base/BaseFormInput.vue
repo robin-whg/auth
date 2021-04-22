@@ -10,12 +10,12 @@
       v-bind="$attrs"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="w-full rounded-lg hover:bg-transparent hover:border-gray-200 border-0 dark:hover:border-gray-700 focus:bg-transparent bg-gray-200 dark:bg-gray-700 focus:ring-0 focus:border-gray-200 dark:focus:border-gray-700"
+      class="w-full rounded-lg focus:ring-2 bg-gray-200 dark:bg-gray-700"
       :class="[
-        error ? 'border-red-500' : 'border-gray-200 dark:border-gray-700',
+        error ? 'border-danger focus:ring-danger border-2' : ' border-0 focus:ring-primary',
       ]"
     />
-    <p class="text-red-500">{{ error }}</p>
+    <p class="text-danger">{{ error }}</p>
   </div>
 </template>
 
