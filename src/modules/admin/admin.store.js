@@ -16,7 +16,7 @@ export const mutations = {
     state.users.push(...users);
   },
   ADD_USER(state, user) {
-    state.users.push(user);
+    state.users.unshift(user);
   },
   DELETE_USER(state, user) {
     state.users = state.users.filter((x) => x.uid !== user.uid);
