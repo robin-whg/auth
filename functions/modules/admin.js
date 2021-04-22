@@ -317,10 +317,12 @@ exports.setCustomUserClaims = functions
           functions.logger.warn(errorMsg);
           res.status(403).send(errorMsg);
         }
-        await admin.auth().setCustomUserClaims(req.body.uid, req.body.claims);
+
+        const data = req.body.data
+        await admin.auth().setCustomUserClaims(data.uid, data.claims);
         res.send({
           status: "success",
-          data: `User claims ${req.body.claims} set`,
+          data: `User claims ${data.claims} set`,
         });
       } catch (error) {
         functions.logger.error(error);

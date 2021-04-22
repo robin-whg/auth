@@ -54,7 +54,7 @@ export const actions = {
       const { data } = await service.updateUser(updatedUser);
       console.log(updatedUser);
       commit("UPDATE_USER", data);
-      return true;
+      return data;
     } catch (error) {
       console.log(error);
       dispatch(
@@ -68,7 +68,22 @@ export const actions = {
     try {
       const { data } = await service.createUser(removeEmpty(user));
       commit("ADD_USER", data);
-      return true;
+      return data;
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        "core/addAlert",
+        { type: "danger", message: error.message },
+        { root: true }
+      );
+    }
+  },
+  async setCustomUserClaims({ commit, dispatch }, { uid, claims }) {
+    try {
+      const { data } = await service.setCustomUserClaims({ uid, claims })
+      const user = {...state.users.find(x => x.uid === uid), customClaims: claims}
+      commit('UPDATE_USER', user)
+      return data;
     } catch (error) {
       console.log(error);
       dispatch(

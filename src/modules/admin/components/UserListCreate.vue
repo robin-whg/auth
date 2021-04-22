@@ -45,10 +45,7 @@
         v-model="newUser.disabled"
       />
       <div class="flex justify-end mt-4">
-        <base-button
-          :loading="loading"
-          type="submit"
-          class="btn-primary w-full"
+        <base-button :loading="loading" type="submit" class="btn-primary w-full"
           >Add User</base-button
         >
       </div>
@@ -93,11 +90,14 @@ export default {
           "admin/createUser",
           this.newUser
         );
-        console.log(user)
-        //const claimsObject = this.customClaims.map(x => ({ x: true }))
-        //console.log(claimsObject)
-        //const res = await this.$store.dispatch("admin/setCustomUserClaims", { uid: user.uid, claims: claimsObject});
-        if (user) this.visible = false;
+        const claims = {};
+        this.customClaims.forEach((x) => (claims[x] = true));
+        console.log(user.uid);
+        const res = await this.$store.dispatch("admin/setCustomUserClaims", {
+          uid: user.uid,
+          claims,
+        });
+        if (res) this.visible = false;
       }
       this.loading = false;
     },
