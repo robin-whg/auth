@@ -26,6 +26,7 @@
         label="Phone Number"
         type="number"
       />
+      <base-form-tags label="Roles" v-model="customClaims" class="mb-2" />
       <base-form-toggle
         class="mt-2"
         label="Verified E-Mail"
@@ -58,21 +59,33 @@ export default {
       visible: false,
       loading: false,
       editedUser: {},
+      customClaims: [],
     };
   },
   methods: {
     async sumbit() {
       this.loading = true;
-      const res = await this.$store.dispatch(
+      const user = await this.$store.dispatch(
         "admin/updateUser",
         this.editedUser
       );
+      const claims = {};
+      this.customClaims.forEach((x) => (claims[x] = true));
+      const res = await this.$store.dispatch("admin/setCustomUserClaims", {
+        uid: user.uid,
+        claims,
+      });
       this.loading = false;
       if (res) this.visible = false;
+    },
+    initClaims() {
+      if (this.user.customClaims)
+        this.customClaims = Object.keys(this.user.customClaims);
     },
   },
   mounted() {
     this.editedUser = { ...this.user };
+    this.initClaims();
   },
   unmounted() {
     this.editedUser = {};
