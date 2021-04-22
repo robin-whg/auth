@@ -5,7 +5,7 @@ export const namespaced = true;
 export const state = {
   users: [],
   pageToken: undefined,
-  maxResults: 25,
+  maxResults: 10,
 };
 
 export const mutations = {
@@ -121,7 +121,7 @@ export const actions = {
 
 function removeEmpty(obj) {
   return Object.entries(obj).reduce(
-    (a, [k, v]) => (v == null ? a : ((a[k] = v), a)),
+    (a, [k, v]) => (v == null || v === '' ? a : ((a[k] = v), a)),
     {}
   );
 }
