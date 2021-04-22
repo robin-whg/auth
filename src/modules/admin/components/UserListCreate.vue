@@ -72,6 +72,26 @@ export default {
       customClaims: [],
     };
   },
+  watch: {
+    // whenever question changes, this function will run
+    visible: function (newValue) {
+      if (newValue === false) {
+        this.visible = false;
+        this.loading = false;
+        this.errorEmail = "";
+        this.newUser = {
+          uid: undefined,
+          email: undefined,
+          emailVerified: false,
+          phoneNumber: undefined,
+          password: undefined,
+          displayName: undefined,
+          disabled: false,
+        };
+        this.customClaims = [];
+      }
+    },
+  },
   methods: {
     async submit() {
       this.loading = true;
@@ -84,7 +104,6 @@ export default {
       ) {
         this.errorEmail = "Please enter a valid email.";
       }
-
       if (!this.errorEmail) {
         const user = await this.$store.dispatch(
           "admin/createUser",
@@ -92,7 +111,6 @@ export default {
         );
         const claims = {};
         this.customClaims.forEach((x) => (claims[x] = true));
-        console.log(user.uid);
         const res = await this.$store.dispatch("admin/setCustomUserClaims", {
           uid: user.uid,
           claims,

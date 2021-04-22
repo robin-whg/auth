@@ -62,6 +62,18 @@ export default {
       customClaims: [],
     };
   },
+  watch: {
+    // whenever question changes, this function will run
+    visible: function (newValue) {
+      if (newValue) {
+        this.editedUser = { ...this.user };
+        this.initClaims();
+      } else {
+        this.editedUser = {};
+        this.customClaims = [];
+      }
+    },
+  },
   methods: {
     async sumbit() {
       this.loading = true;
@@ -82,13 +94,6 @@ export default {
       if (this.user.customClaims)
         this.customClaims = Object.keys(this.user.customClaims);
     },
-  },
-  mounted() {
-    this.editedUser = { ...this.user };
-    this.initClaims();
-  },
-  unmounted() {
-    this.editedUser = {};
   },
 };
 </script>
