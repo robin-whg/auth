@@ -10,7 +10,7 @@
         class="my-2 alert-primary"
       >
         {{ v }}
-        <button @click="remove(v)" class="pl-1">
+        <button @click.prevent="remove(v)" class="pl-1">
           <base-icon name="x" size="h-4 w-4" />
         </button>
       </base-badge>
