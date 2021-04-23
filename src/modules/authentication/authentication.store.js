@@ -4,19 +4,28 @@ export const namespaced = true;
 
 export const state = {
   user: {},
+  token: {}
 };
 
 export const mutations = {
   SET_USER(state, user) {
     state.user = user;
   },
+  SET_TOKEN(state, token) {
+    state.token = token
+  }
 };
 
 export const actions = {
   setUser({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
-      const unsubscribe = auth.onAuthStateChanged((user) => {
+      const unsubscribe = auth.onAuthStateChanged(async (user) => {
         commit("SET_USER", user);
+        if(user) {
+          const token = await auth.currentUser.getIdTokenResult(true)
+          console.log(token)
+          commit('SET_TOKEN', token)
+        }
         unsubscribe();
         dispatch("bindUser");
         resolve();
@@ -24,8 +33,12 @@ export const actions = {
     });
   },
   bindUser({ commit }) {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
       commit("SET_USER", user);
+      if(user) {
+        const token = await auth.currentUser.getIdTokenResult()
+        commit('SET_TOKEN', token)
+      }
     });
   },
   async signIn({ dispatch }, { email, password }) {
@@ -69,4 +82,7 @@ export const getters = {
   isAuthenticated: (state) => {
     return state.user ? true : false;
   },
+  getClaims: (state) => {
+    return state.token?.claims
+  }
 };
