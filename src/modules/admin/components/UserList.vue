@@ -4,6 +4,7 @@
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="flex justify-end mb-2 space-x-2">
           <base-search
+            class="w-80"
             v-model.trim="searchQuery"
             placeholder="Search for email, phone, uid..."
             @clear-event="clear()"

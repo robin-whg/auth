@@ -14,7 +14,7 @@
       type="text"
       class="bg-transparent border-0 active:border-0 active:ring-0 focus:border-0 focus:ring-0"
     />
-    <button @click="clear()">
+    <button :class="{ 'invisible': modelValue.length === 0 }" @click="clear()">
       <base-icon name="backspace" class="link-secondary" />
     </button>
   </div>
