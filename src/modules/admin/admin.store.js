@@ -15,6 +15,9 @@ export const mutations = {
   ADD_USERS(state, users) {
     state.users.push(...users);
   },
+  SET_USERS(state, users) {
+    state.users = users
+  },
   ADD_USER(state, user) {
     state.users.unshift(user);
   },
@@ -80,9 +83,12 @@ export const actions = {
   },
   async setCustomUserClaims({ commit, dispatch }, { uid, claims }) {
     try {
-      const { data } = await service.setCustomUserClaims({ uid, claims })
-      const user = {...state.users.find(x => x.uid === uid), customClaims: claims}
-      commit('UPDATE_USER', user)
+      const { data } = await service.setCustomUserClaims({ uid, claims });
+      const user = {
+        ...state.users.find((x) => x.uid === uid),
+        customClaims: claims,
+      };
+      commit("UPDATE_USER", user);
       return data;
     } catch (error) {
       console.log(error);
@@ -117,11 +123,47 @@ export const actions = {
       );
     }
   },
+  async getUsers({ commit, dispatch }, searchQuery) {
+    try {
+      const type = evaluateQueryType(searchQuery);
+      if (type) {
+        const { data } = await service.getUsers([{ [type]: searchQuery }]);
+        commit('SET_USERS', data.users || [])
+        commit('SET_PAGE_TOKEN', undefined)
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(
+        "core/addAlert",
+        { type: "danger", message: error.message },
+        { root: true }
+      );
+    }
+  },
 };
 
 function removeEmpty(obj) {
   return Object.entries(obj).reduce(
-    (a, [k, v]) => (v == null || v === '' ? a : ((a[k] = v), a)),
+    (a, [k, v]) => (v == null || v === "" ? a : ((a[k] = v), a)),
     {}
   );
+}
+
+function evaluateQueryType(query) {
+  console.log(query);
+  if (query.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)) {
+    console.log("email");
+    return "email";
+  }
+  if (query.match(/^\+[1-9]\d{10,14}$/)) {
+    console.log("phone number");
+    return "phoneNumber";
+  } else if (query.match(/^[a-zA-Z0-9]+$/i)) {
+    console.log("uid");
+    return "uid";
+  } else {
+    console.log("invalid");
+    return false;
+  }
 }

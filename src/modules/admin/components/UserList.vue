@@ -3,30 +3,13 @@
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="flex justify-end mb-2 space-x-2">
+          <base-search v-model.trim="searchQuery" placeholder="Search..." @search-event="search()"/>
           <user-list-create class="" />
         </div>
         <div
           class="shadow-sm overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl"
         >
-          <!--
-          <div class="flex items-center space-x-4 py-2 px-4">
-            <base-form-input
-              class="w-full"
-              v-model.trim="searchQuery"
-              label="Search"
-              srOnly
-              type="text"
-              placeholder="Search for name, email, uid or role"
-            ></base-form-input>
-            <base-button class="btn-primary">
-              <span>Add User</span>
-            </base-button>
-            <base-button size="sm" rounded class="link-secondary">
-              <base-icon @click="refresh()" name="refresh" />
-            </base-button>
-          </div>
-          -->
-          <table
+         <table
             class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
           >
             <thead class="">
@@ -114,6 +97,7 @@ export default {
   methods: {
     ...mapActions({
       listUsers: "admin/listUsers",
+      getUsers: "admin/getUsers"
     }),
     async loadUsers() {
       this.loading = true;
@@ -125,6 +109,12 @@ export default {
       await this.listUsers();
       this.loadingMore = false;
     },
+    async search() {
+      console.log('search')
+      this.loading = true
+      await this.getUsers(this.searchQuery)
+      this.loading = false
+    }
   },
   created() {
     this.loadUsers();

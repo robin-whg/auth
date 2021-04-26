@@ -122,7 +122,8 @@ exports.getUsers = functions
           res.status(403).send(errorMsg);
         }
 
-        const getUsersResult = await admin.auth().getUsers(req.body);
+        const data = req.body.data
+        const getUsersResult = await admin.auth().getUsers(data);
         res.send({
           status: "success",
           data: getUsersResult,
