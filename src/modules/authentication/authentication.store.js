@@ -83,6 +83,6 @@ export const getters = {
     return state.user ? true : false;
   },
   getClaims: (state) => {
-    return state.token?.claims
+    return state.token?.claims || {}
   }
 };
