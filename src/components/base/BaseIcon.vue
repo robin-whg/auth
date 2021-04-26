@@ -11,6 +11,7 @@ import {
   TrashIcon,
   XIcon,
   CheckCircleIcon,
+  MenuIcon,
   ExclamationCircleIcon,
   XCircleIcon,
   InformationCircleIcon,
@@ -26,6 +27,7 @@ import {
 } from "@heroicons/vue/outline";
 
 const icons = {
+  "menu": MenuIcon,
   "lock-closed": LockClosedIcon,
   "badge-check": BadgeCheckIcon,
   "user-add": UserAddIcon,

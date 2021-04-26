@@ -13,7 +13,7 @@
         <template v-for="link in links" :key="link.route">
           <router-link
             tag="base-button"
-            class="rounded-xl py-2 px-4 hover:bg-gray-200 dark:hover:bg-gray-700 hidden sm:block"
+            class="rounded-xl py-2 px-4 hover:text-primary hidden sm:block font-semibold"
             :to="{ name: link.route }"
           >
             {{ link.name }}
@@ -22,21 +22,19 @@
       </div>
 
       <div class="flex">
+        <the-navbar-avatar />
         <base-button
           size="sm"
-          pill
           class="sm:hidden link-secondary"
           @click="isVisible = !isVisible"
         >
-          <i v-if="!isVisible" class="bi bi-list text-2xl" />
-          <i v-else class="bi bi-x text-2xl" />
+          <base-icon name="menu" size="h-8 w-8" />
         </base-button>
-        <the-navbar-avatar />
       </div>
     </div>
     <div v-if="isVisible" class="sm:hidden flex flex-col space-y-4 px-4 py-2">
       <template v-for="link in links" :key="link.route">
-        <router-link :to="{ name: link.route }">
+        <router-link :to="{ name: link.route }" class="font-semibold">
           {{ link.name }}
         </router-link>
       </template>
