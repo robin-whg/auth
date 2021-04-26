@@ -23,10 +23,12 @@ import {
   RefreshIcon,
   UserAddIcon,
   BadgeCheckIcon,
-  LockClosedIcon
+  LockClosedIcon,
+  SearchIcon
 } from "@heroicons/vue/outline";
 
 const icons = {
+  "search": SearchIcon,
   "menu": MenuIcon,
   "lock-closed": LockClosedIcon,
   "badge-check": BadgeCheckIcon,
