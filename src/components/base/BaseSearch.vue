@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex items-center rounded-lg border-0 bg-gray-200 dark:bg-gray-700 "
+    class="flex items-center rounded-lg space-x-2 px-2 border-0 bg-gray-200 dark:bg-gray-700 "
   >
-    <button @click="$emit('search-event')" class="ml-2">
-      <base-icon name="search" class="text-gray-400 dark:text-gray-600"/>
+    <button @click="$emit('search-event')">
+      <base-icon name="search" class="link-secondary" />
     </button>
     <label class="sr-only">Search</label>
     <input
@@ -12,8 +12,11 @@
       @input="$emit('update:modelValue', $event.target.value)"
       @keyup.enter="$emit('search-event')"
       type="text"
-      class="bg-transparent mx-1 border-0 active:border-0 active:ring-0 focus:border-0 focus:ring-0"
+      class="bg-transparent border-0 active:border-0 active:ring-0 focus:border-0 focus:ring-0"
     />
+    <button @click="clear()">
+      <base-icon name="backspace" class="link-secondary" />
+    </button>
   </div>
 </template>
 
@@ -23,6 +26,12 @@ export default {
     modelValue: {
       type: String,
       required: true,
+    },
+  },
+  methods: {
+    clear() {
+      this.$emit("update:modelValue", "");
+      this.$emit("clear-event");
     },
   },
 };
