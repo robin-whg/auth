@@ -3,13 +3,18 @@
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="flex justify-end mb-2 space-x-2">
-          <base-search v-model.trim="searchQuery" placeholder="Search..." @search-event="search()"/>
+          <base-search
+            v-model.trim="searchQuery"
+            placeholder="Search..."
+            @search-event="search()"
+          />
           <user-list-create class="" />
         </div>
         <div
           class="shadow-sm overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl"
         >
-         <table
+          <table
+            v-if="loading || users.length > 0"
             class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
           >
             <thead class="">
@@ -47,6 +52,7 @@
               <template v-if="loading">
                 <user-list-item-loading v-for="i in maxResults" :key="i" />
               </template>
+
               <template v-else>
                 <user-list-item
                   v-for="user in users"
@@ -56,6 +62,9 @@
               </template>
             </tbody>
           </table>
+          <div v-else class="my-8 flex items-center w-full justify-center">
+            <p class="text-xl">No results.</p>
+          </div>
         </div>
       </div>
       <div class="flex justify-center">
@@ -97,7 +106,7 @@ export default {
   methods: {
     ...mapActions({
       listUsers: "admin/listUsers",
-      getUsers: "admin/getUsers"
+      getUsers: "admin/getUsers",
     }),
     async loadUsers() {
       this.loading = true;
@@ -110,11 +119,11 @@ export default {
       this.loadingMore = false;
     },
     async search() {
-      console.log('search')
-      this.loading = true
-      await this.getUsers(this.searchQuery)
-      this.loading = false
-    }
+      console.log("search");
+      this.loading = true;
+      await this.getUsers(this.searchQuery);
+      this.loading = false;
+    },
   },
   created() {
     this.loadUsers();
@@ -122,5 +131,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
