@@ -16,7 +16,7 @@ export const mutations = {
     state.users.push(...users);
   },
   SET_USERS(state, users) {
-    state.users = users
+    state.users = users;
   },
   ADD_USER(state, user) {
     state.users.unshift(user);
@@ -128,9 +128,15 @@ export const actions = {
       const type = evaluateQueryType(searchQuery);
       if (type) {
         const { data } = await service.getUsers([{ [type]: searchQuery }]);
-        commit('SET_USERS', data.users || [])
-        commit('SET_PAGE_TOKEN', undefined)
+        commit("SET_USERS", data.users || []);
+        commit("SET_PAGE_TOKEN", undefined);
         console.log(data);
+      } else {
+        dispatch(
+          "core/addAlert",
+          { type: "danger", message: 'Invalid search query.' },
+          { root: true }
+        );
       }
     } catch (error) {
       console.log(error);
@@ -140,6 +146,11 @@ export const actions = {
         { root: true }
       );
     }
+  },
+  async refreshUsers({ commit, dispatch }) {
+    commit("SET_PAGE_TOKEN", undefined);
+    commit("SET_USERS", []);
+    await dispatch("listUsers");
   },
 };
 
@@ -151,7 +162,6 @@ function removeEmpty(obj) {
 }
 
 function evaluateQueryType(query) {
-  console.log(query);
   if (query.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)) {
     console.log("email");
     return "email";

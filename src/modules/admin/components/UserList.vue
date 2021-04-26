@@ -5,7 +5,8 @@
         <div class="flex justify-end mb-2 space-x-2">
           <base-search
             v-model.trim="searchQuery"
-            placeholder="Search..."
+            placeholder="Search for email, phone, uid..."
+            @clear-event="clear()"
             @search-event="search()"
           />
           <user-list-create class="" />
@@ -107,6 +108,7 @@ export default {
     ...mapActions({
       listUsers: "admin/listUsers",
       getUsers: "admin/getUsers",
+      refreshUsers: "admin/refreshUsers"
     }),
     async loadUsers() {
       this.loading = true;
@@ -124,6 +126,11 @@ export default {
       await this.getUsers(this.searchQuery);
       this.loading = false;
     },
+    async clear() {
+      this.loading = true
+      await this.refreshUsers()
+      this.loading = false
+    }
   },
   created() {
     this.loadUsers();
