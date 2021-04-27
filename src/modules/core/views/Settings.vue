@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto">
+    <div class="container mx-auto p-4">
         <h1>Settings</h1>
     </div>
 </template>
