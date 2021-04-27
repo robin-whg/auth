@@ -23,7 +23,6 @@ export const actions = {
         commit("SET_USER", user);
         if(user) {
           const token = await auth.currentUser.getIdTokenResult(true)
-          console.log(token)
           commit('SET_TOKEN', token)
         }
         unsubscribe();
