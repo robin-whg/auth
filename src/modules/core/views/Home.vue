@@ -1,7 +1,6 @@
 <template>
   <div v-if="claims.employee || claims.admin" class="container p-4 mx-auto">
     <h1>Home</h1>
-    <pre>{{ claims }}</pre>
   </div>
   <base-deny v-else />
 </template>

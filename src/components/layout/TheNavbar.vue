@@ -58,6 +58,10 @@ export default {
           route: "Home",
         },
         {
+          name: "User Management",
+          route: "UserManagement"
+        },
+        {
           name: "Settings",
           route: "Settings",
         },
